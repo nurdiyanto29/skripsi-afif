@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
             'name' => 'super admin',
             'email' => 'admin@admin.com',
             'status' => 'aktif',
-            'guard_name' => 'admin',
+            'role' => 'admin',
             'password' => bcrypt('12345')
         ]);
         // dd($user);

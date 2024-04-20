@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -11,13 +12,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('lapangan_detail', function (Blueprint $table) {
+        Schema::create('objek_wisata', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('lapangan_id');
-            $table->string('nama', 50);
+            $table->string('nama');
             $table->text('deskripsi');
+            $table->string('lokasi');
+            $table->text('atraksi');
+            $table->string('biaya_masuk');
             $table->timestamps();
         });
+        // DB::statement('ALTER TABLE objek_wisata ALTER COLUMN id SET DEFAULT uuid_generate_v4();');
     }
 
     /**
@@ -25,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('lapangan_detail');
+        Schema::dropIfExists('objek_wisata');
     }
 };

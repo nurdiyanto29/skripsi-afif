@@ -7,7 +7,7 @@
     </a>
     <!-- Sidebar -->
 
-    @if (Auth::user()->role == 'pemilik')
+    @if (Auth::user()->role == 'admin')
         <div class="sidebar">
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column nav-collapse-hide-child" data-widget="treeview"
@@ -20,14 +20,16 @@
                         </a>
                     </li>
                     @foreach ([
-        'produk' => [],
-        'penjualan' => [],
-        'kriteria' => [
-            // 'title' => 'Kriteria Ya', //kosongi saja jika sama dengan kriteria
-            // 'icon' => 'fas fa-file',
-        ],
-        'konfigurasi' => [],
-        'ranking' => [],
+        'travel' => [],
+        'sopir' => [],
+        'objek_wisata' => [],
+        'pesanan' => [],
+        // 'kriteria' => [
+        //     // 'title' => 'Kriteria Ya', //kosongi saja jika sama dengan kriteria
+        //     // 'icon' => 'fas fa-file',
+        // ],
+        // 'konfigurasi' => [],
+        // 'ranking' => [],
         'user' => [],
     ] as $key => $val)
                         <li class="nav-item">
@@ -44,7 +46,7 @@
             <!-- /.sidebar-menu -->
         </div>
     @endif
-    @if (Auth::user()->role == 'operator')
+    {{-- @if (Auth::user()->role == 'operator')
         <div class="sidebar">
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column nav-collapse-hide-child" data-widget="treeview"
@@ -79,5 +81,5 @@
             <!-- /.sidebar-menu -->
         </div>
     @endif
-    <!-- /.sidebar -->
+    <!-- /.sidebar --> --}}
 </aside>

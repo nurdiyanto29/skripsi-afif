@@ -13,13 +13,7 @@ class Authenticate extends Middleware
      */
     protected function redirectTo(Request $request): ?string
     {
-
-        if ($request->is('api/*')) {
-            $message = 'Unauthorized'; // Pesan untuk kegagalan otentikasi
-            abort(401, $message);
-        } else {
             return route('getlogin'); // Kembalikan rute login untuk aplikasi web
-        }
 
     }
 }

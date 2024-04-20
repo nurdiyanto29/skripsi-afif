@@ -16,24 +16,12 @@ class CekAuth
     public function handle(Request $request, Closure $next, ...$role)
     {
 
-        if ($request->is('api/*')) {
-            if (auth()->user() && in_array(auth()->user()->role, $role)) {
-                return $next($request);
-            }
-            $message = 'Unauthorized'; // Pesan untuk kegagalan otentikasi
-            abort(401, $message);
-        } else {
             if (auth()->user() && in_array(auth()->user()->role, $role)) {
                 return $next($request);
             }
 
             return redirect()->route('getlogin');
 
-
-
-
-            // dd(auth()->user()->role);
-
-        }
+        
     }
 }

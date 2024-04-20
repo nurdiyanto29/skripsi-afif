@@ -15,6 +15,7 @@ class AuthController extends Controller
 {
     public function authenticate(Request $request)
     {
+        // dd(1);
         $request->validate([
             'email' => 'required|email',
             'password' => 'required|string'
@@ -24,11 +25,7 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             if (Auth::user()) {
-                Auth::user()->role == 'pemilik' || Auth::user()->role == 'operator' ? $rdrct = 'admin.index' : $rdrct = 'admin.index';
-
-                // dd(Auth::user()->role);
-                $cek = Hash::check('password', Auth::user()->password);
-                if ($cek == true) return redirect()->route($rdrct)->with('error', 'Segera ubah password anda');
+              $rdrct = 'admin.index';
                 return redirect()->route($rdrct);
             } else {
                 Auth::logout();

@@ -1,56 +1,116 @@
 <?php
 
-use App\Models\PlanOverview;
 use Illuminate\Support\Str;
+use App\Models\PlanOverview;
 use Hamcrest\Type\IsNumeric;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\File;
 
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Storage;
 use function PHPUnit\Framework\fileExists;
 
 
-function uriaktif($uri='',$segment=2)
+function uriaktif($uri = '', $segment = 2)
 {
     if (is_array($uri)) return in_array(Request::segment($segment), $uri) ? 'active' : '';
     return Request::segment($segment) == $uri ? 'active' : '';
 }
 
+// untuk mencari/membuat folder files by tanggal
+function files_folder($tgl, $file = null)
+{
+    $path = 'files/';
+    $bulan = substr(md5(tgl($tgl, 'YMM')), 0, 16);
+    $minggu = substr(md5(tgl($tgl, 'w')), 0, 16);
+
+    $fullpath = $path . $bulan . '/' . $minggu . '/';
+
+    if ($file) {
+        $fullpath .= $file;
+        $fullpath = (File::exists($fullpath) && is_file($fullpath)) ? URL::asset($fullpath) : null;
+    } else {
+        $cek = File::exists($fullpath) ?: File::makeDirectory($fullpath, 0775, true);
+        if (!$cek) abort(403, 'Cannot create directory');
+    }
+
+    return $fullpath;
+}
+
+// mengambgil
+function system_files($e)
+{
+    if (!($e->disk_name ?? null)) return;
+    return files_folder($e->created_at, $e->disk_name);
+}
+
+function uploadFile($file, $folder)
+{
+    // Periksa apakah file ada atau tidak kosong
+    if ($file && $file->isValid()) {
+        // Generate nama file unik
+        $fileName = time() . '_' . $file->getClientOriginalName();
+
+        // Direktori penyimpanan file
+        $storagePath = public_path('files/' . $folder);
+
+        // Buat direktori jika belum ada
+        if (!file_exists($storagePath)) {
+            mkdir($storagePath, 0755, true);
+        }
+
+        // Simpan file ke dalam folder yang sesuai dengan nama tabel
+        $filePath = $file->move($storagePath, $fileName);
+
+        // Kembalikan path lengkap file yang disimpan
+        return 'files/' . $folder . '/' . $fileName;
+    }
+
+    // Jika file tidak ada atau tidak valid, kembalikan null
+    return null;
+}
+
 
 // Start template
-function table_count($value){
+function table_count($value)
+{
     return $value->count() ?: null;
 }
 
 // Start time
 function tgl($date, $format = 'D MMM Y')
 {
-    if(!$date) return;
-    try{
-        if(gettype($date) == 'object' ){
+    if (!$date) return;
+    try {
+        if (gettype($date) == 'object') {
             return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $date)->isoFormat($format);
-        }else{
+        } else {
             return \Carbon\Carbon::parse($date)->isoFormat($format);
         }
-    }catch(\Carbon\Exceptions\InvalidFormatException $e){
+    } catch (\Carbon\Exceptions\InvalidFormatException $e) {
         return null;
     }
-
 }
 
-function tgl_full($date) { return tgl($date,'D MMMM Y'); }
+function tgl_full($date)
+{
+    return tgl($date, 'D MMMM Y');
+}
 
-function jam($date) { return tgl($date,'HH:mm'); }
+function jam($date)
+{
+    return tgl($date, 'HH:mm');
+}
 
 
-function thumbnail($file, $thumb='thumb_', $src = false, $replace = true)
+function thumbnail($file, $thumb = 'thumb_', $src = false, $replace = true)
 {
     $i = Storage::url($file);
     $x = str_replace("storage", "files", $i);
-    $e = explode('/',$x);
+    $e = explode('/', $x);
     $file = end($e);
-    $thum_file = str_replace($file, $thumb.$file, $x);
+    $thum_file = str_replace($file, $thumb . $file, $x);
 
     $thum_exist = file_exists((public_path($thum_file)));
     $origin_exist = file_exists((public_path($x)));
@@ -63,13 +123,13 @@ function thumbnail($file, $thumb='thumb_', $src = false, $replace = true)
     if ($src) return $replace  ? $img : ($exist ? $img : null);
     return  $replace  ? '<img src="' . $img . '" style="max-width:100px; max-height:110px;" />' : null;
 }
-function aparatur_img($file, $thumb='thumb_', $src = false, $replace = true)
+function aparatur_img($file, $thumb = 'thumb_', $src = false, $replace = true)
 {
     $i = Storage::url($file);
     $x = str_replace("storage", "files", $i);
-    $e = explode('/',$x);
+    $e = explode('/', $x);
     $file = end($e);
-    $thum_file = str_replace($file, $thumb.$file, $x);
+    $thum_file = str_replace($file, $thumb . $file, $x);
 
     $thum_exist = file_exists((public_path($thum_file)));
     $origin_exist = file_exists((public_path($x)));
@@ -78,7 +138,7 @@ function aparatur_img($file, $thumb='thumb_', $src = false, $replace = true)
 
     $x = $thum_exist ? $thum_file : $x;
 
-    if($thum_file == '/files/') $exist = false;
+    if ($thum_file == '/files/') $exist = false;
 
     $notFound = 'img/actornotfound.jpg';
     $img = $exist ? URL::asset($x) : URL::asset($notFound);
@@ -87,10 +147,11 @@ function aparatur_img($file, $thumb='thumb_', $src = false, $replace = true)
     return  $replace  ? '<img src="' . $img . '" style="max-width:100px; max-height:110px;" />' : null;
 }
 
-function image($file, $src=false, $replace=true){
+function image($file, $src = false, $replace = true)
+{
     $i = Storage::url($file);
     $x = str_replace("storage", "files", $i);
-    
+
     $exist = file_exists((public_path($x)));
 
     $notFound = 'img/notfound.png';
@@ -101,35 +162,35 @@ function image($file, $src=false, $replace=true){
 }
 
 
-function remove_image($file,$thumb='')
+function remove_image($file, $thumb = '')
 {
     $i = Storage::url($file);
     $x = str_replace("storage", "files", $i);
     if (file_exists(public_path($x))) {
-        
-        @unlink(public_path($x));
-        if($thumb) {
-            $e = explode('/',$x);
-            $file = end($e);
-            @unlink(public_path( str_replace($file, $thumb.$file, $x) ));
-        }
 
+        @unlink(public_path($x));
+        if ($thumb) {
+            $e = explode('/', $x);
+            $file = end($e);
+            @unlink(public_path(str_replace($file, $thumb . $file, $x)));
+        }
     }
 }
 
 
-function get_substr($string,$value=50){
+function get_substr($string, $value = 50)
+{
     $string = strip_tags($string);
     $value = intval($value);
     if ($value > 0) {
-        $dot = (strlen($string)>$value) ? "..." : '';
+        $dot = (strlen($string) > $value) ? "..." : '';
         $txt = substr($string, 0, $value);
-        return $txt.$dot;
-    }else if ($value < 0){
+        return $txt . $dot;
+    } else if ($value < 0) {
         $txt = substr($string, $value);
         $value = abs($value);
-        $dot = (strlen($string)>$value) ? "..." : '';
-        return $dot.$txt;
+        $dot = (strlen($string) > $value) ? "..." : '';
+        return $dot . $txt;
     }
 }
 
@@ -156,14 +217,15 @@ function ceklist($val)
 }
 
 //ubah tr color (boolean)
-function tr_color_code($val, $reverse=null){
+function tr_color_code($val, $reverse = null)
+{
     $color = 'table-secondary';
-    if($reverse) return $val ? '' : $color;
+    if ($reverse) return $val ? '' : $color;
     else return $val ? $color : '';
-
 }
 
-function color_rgb($key){
+function color_rgb($key)
+{
     $color = [
         '223, 255, 0', '255, 191, 0', '255, 127, 80', '222, 49, 99', '159, 226, 191',
         '64, 224, 208', '100, 149, 237', '204, 204, 255', '255, 105, 180', '255, 99, 71',
@@ -171,9 +233,9 @@ function color_rgb($key){
         '60, 179, 113', '0, 128, 0', '128, 128, 0', '102, 205, 170', '127, 255, 212',
         '70, 130, 180', '123, 104, 238', '0, 0, 205', '188, 143, 143', '160, 82, 45',
         '112, 128, 144', '255, 160, 122', '199, 21, 133', '255, 218, 185', '102, 51, 153'
-    ]; 
+    ];
     $jml_key = count($color) - 1;
-    if($key > $jml_key ) $key = $key % $jml_key;
+    if ($key > $jml_key) $key = $key % $jml_key;
     return "rgb($color[$key])";
 }
 
@@ -205,16 +267,17 @@ function dateDiff($start, $end)
 }
 
 
-function role_type($type, $model, $return=false){
+function role_type($type, $model, $return = false)
+{
     // dd($model);
     $user = auth()->user();
-    if($user->hasRole('Super Admin')) return true;
+    if ($user->hasRole('Super Admin')) return true;
 
     $model = camel2snake($model);
-    $role = $user->can( strtolower($model).'-'.$type  );
-    if($return) return $role;
+    $role = $user->can(strtolower($model) . '-' . $type);
+    if ($return) return $role;
 
-    if(!$role) abort('401');
+    if (!$role) abort('401');
 }
 
 function nominal($val)
@@ -234,18 +297,18 @@ function summernote($content)
         if (strpos($dt, 'data') !== false) {
             list($type, $dt) = array_pad(explode(';', $dt), 2, null);
             list(, $dt) = array_pad(explode(',', $dt), 2, null);
-            
+
             $imgeData = base64_decode($dt);
             $f = finfo_open();
             $mime_type = finfo_buffer($f, $imgeData, FILEINFO_MIME_TYPE);
-            $ext = mime_to_ext($mime_type,'jpg');
+            $ext = mime_to_ext($mime_type, 'jpg');
 
-            $image_name = "media/" . time().'-'.uniqid().$ext;
-            
-            $img = Image::make($dt)->save($image_name,65);
-            if($img){
+            $image_name = "media/" . time() . '-' . uniqid() . $ext;
+
+            $img = Image::make($dt)->save($image_name, 65);
+            if ($img) {
                 $image->removeAttribute('src');
-                $image->setAttribute('src', '/'.$image_name);
+                $image->setAttribute('src', '/' . $image_name);
             }
         }
     }
@@ -253,7 +316,8 @@ function summernote($content)
     return $content;
 }
 
-function mime_to_ext($val,$default=null){
+function mime_to_ext($val, $default = null)
+{
 
     switch ($val) {
 
@@ -273,9 +337,8 @@ function mime_to_ext($val,$default=null){
             return ".bmp";
             break;
         default:
-            return $default ? ".$default": null;
+            return $default ? ".$default" : null;
             break;
-
     }
 }
 
@@ -309,7 +372,7 @@ function fileExtension($name)
 // khusus mysql dan sekarang ERROR
 function get_enum($table, $field, $json = false)
 {
-    
+
     // DB::enableQueryLog();
     $type = DB::select(DB::raw("SHOW COLUMNS FROM $table WHERE Field = '$field'"))[0]->Type ?? null;
     preg_match("/^enum\(\'(.*)\'\)$/", $type, $matches);
@@ -318,19 +381,20 @@ function get_enum($table, $field, $json = false)
 }
 
 
-function soft_delete($model){
-    try{
-        $model = '\App\Models\\'.$model;
+function soft_delete($model)
+{
+    try {
+        $model = '\App\Models\\' . $model;
         return in_array('Illuminate\Database\Eloquent\SoftDeletes', class_uses($model));
-    }catch(ErrorException $err){
+    } catch (ErrorException $err) {
         return null;
     }
-
 }
 
-function model_path($model){
+function model_path($model)
+{
     $model = str_replace(' ', '', ucwords(str_replace('_', ' ', $model)));
-    return 'App\Models\\'.$model;
+    return 'App\Models\\' . $model;
 }
 
 
@@ -340,11 +404,9 @@ function model_path($model){
 function camel2snake($string)
 {
     return strtolower(preg_replace('/(?<!^)[A-Z]/', '_$0', $string));
-
 }
 
-function url_back($msg = 'Akses ditolak!'){
-    return url()->previous() != url()->full() ? redirect()->to(url()->previous())->with('error',$msg) : abort(401);
+function url_back($msg = 'Akses ditolak!')
+{
+    return url()->previous() != url()->full() ? redirect()->to(url()->previous())->with('error', $msg) : abort(401);
 }
-
-

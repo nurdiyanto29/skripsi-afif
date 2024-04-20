@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -11,13 +12,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('jadwal', function (Blueprint $table) {
+        Schema::create('sopir', function (Blueprint $table) {
             $table->id();
-            $table->string('mulai', 50);
-            $table->string('selesai', 50);
-            $table->bigInteger('harga');
+            $table->string('nama');
+            $table->date('tanggal_lahir');
+            $table->enum('jenis_kelamin', ['L', 'P']);
+            $table->string('foto');
             $table->timestamps();
         });
+        // DB::statement('ALTER TABLE sopir ALTER COLUMN id SET DEFAULT uuid_generate_v4();');
     }
 
     /**
@@ -25,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('jadwal');
+        Schema::dropIfExists('sopir');
     }
 };
