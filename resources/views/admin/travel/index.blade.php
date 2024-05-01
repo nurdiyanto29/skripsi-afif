@@ -25,35 +25,43 @@
                         <thead>
                             <tr style="text-align: center">
                                 <th style="width: 20px">No</th>
-                                <th>Nama</th>
-                                <th>Umur</th>
-                                <th>Jenis Kelamin</th>
-                                <th>Foto</th>
+                                @foreach ($componen as $columnName)
+                                    <th>{{ ucwords(str_replace('_', ' ', preg_replace('/_id$/', '', $columnName))) }}</th>
+                                @endforeach
                                 <th style="width: 20px"><i class="fas fa-cogs"></i></th>
                             </tr>
                         </thead>
                         <tbody>
                             @php
                                 $x = 1;
-                                $columnCount = count($data->first() ? $data->first()->toArray() : []);
+                                $customFormats = [
+                                    'durasi_sewa' => fn($value) => "$value Jam",
+                                    'harga' => fn($value) => nominal($value),
+                                ];
                             @endphp
                             @foreach ($data as $val)
                                 <tr>
                                     <td>{{ $x++ }}</td>
-                                    <td>{{ $val->nama}}</td>
-                                    <td>{{ $val->umur}} Tahun</td>
-                                    <td>{{ $val->jk}}</td>
-                                    <td>{{ $val->foto}}</td>
-                                    <td style="text-align: center"> <a href="#" class="nav-link has-dropdown"
-                                            data-toggle="dropdown"><i class="fa fa-ellipsis-h "
-                                                style="color: #777778"></i></a>
+                                    @foreach ($componen as $cn)
+                                        <td>
+                                            @if (array_key_exists($cn, $customFormats))
+                                                {{ $customFormats[$cn]($val->$cn) }}
+                                                @elseif ($cn == 'sopir_id')
+                                                {{ $val->sopir->nama ?? '' }}
+                                            @else
+                                                {{ $val->$cn }}
+                                            @endif
+                                        </td>
+                                    @endforeach
+                                    <td style="text-align: center">
+                                        <div class="nav-link has-dropdown" data-toggle="dropdown">
+                                            <i class="fa fa-ellipsis-h" style="color: #777778"></i>
+                                        </div>
                                         <ul class="dropdown-menu">
                                             <li><a href="/admin/travel/edit?_i={{ $val->id }}"
                                                     class="nav-link">Edit</a></li>
-                                            <li> <a href="#" id="delete-data" data-id={{ $val->id }}
-                                                    class="nav-link" data-toggle="modal"
-                                                    data-target="#deleteModal">Delete</a></li>
-                                            </a></li>
+                                            <li><a href="#" class="nav-link delete-data" data-id="{{ $val->id }}"
+                                                    data-toggle="modal" data-target="#deleteModal">Delete</a></li>
                                         </ul>
                                     </td>
                                 </tr>

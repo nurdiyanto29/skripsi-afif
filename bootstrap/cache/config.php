@@ -165,8 +165,8 @@
     ),
     'footer' => 
     array (
-      'footer_left' => '2024-04-20',
-      'footer_right' => '2024-04-20',
+      'footer_left' => '2024-05-01',
+      'footer_right' => '2024-05-01',
     ),
   ),
   'broadcasting' => 

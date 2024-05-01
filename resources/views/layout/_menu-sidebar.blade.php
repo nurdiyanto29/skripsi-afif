@@ -1,9 +1,9 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-light-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="/" class="brand-link">
-        <img src="{{ config('base.logo') }}" alt="Logo" class="brand-image  elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">{{ config('base.sidebar_name') }}</span>
+    <a href="/admin" class="brand-link">
+        <img src="https://static.vecteezy.com/system/resources/thumbnails/004/895/874/small_2x/van-minibus-isolate-on-the-background-ready-to-apply-to-your-design-illustration-free-vector.jpg" alt="Logo" class="brand-image  elevation-3" style="opacity: .8">
+        <span class="brand-text font-weight-light">TRAVELGK</span>
     </a>
     <!-- Sidebar -->
 
@@ -14,7 +14,7 @@
                     role="menu" data-accordion="false">
 
                     <li class="nav-item">
-                        <a href="/" class="nav-link">
+                        <a href="/admin" class="nav-link">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
                             <p>Dashboard</p>
                         </a>
@@ -24,13 +24,14 @@
         'sopir' => [],
         'objek_wisata' => [],
         'pesanan' => [],
+        'pembayaran' => [],
         // 'kriteria' => [
         //     // 'title' => 'Kriteria Ya', //kosongi saja jika sama dengan kriteria
         //     // 'icon' => 'fas fa-file',
         // ],
         // 'konfigurasi' => [],
         // 'ranking' => [],
-        'user' => [],
+        'wisatawan' => [],
     ] as $key => $val)
                         <li class="nav-item">
                             <a href="/admin/{{ $key }}" class="nav-link">

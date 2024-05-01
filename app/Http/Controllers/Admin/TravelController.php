@@ -14,11 +14,26 @@ use App\Http\Controllers\Controller;
 
 class TravelController extends Controller
 {
-    function index()
+
+  public $componen = [
+        'jenis_mobil',
+        'tranmisi',
+        'nama',
+        'jml_kursi',
+        'tahun_mobil',
+        'sopir_id',
+        'harga',
+        'durasi_sewa',
+    ];
+
+    public function index()
     {
         $data = Travel::all();
-        return view('admin.travel.index', compact('data'));
+        $componen = $this->componen;
+        return view('admin.travel.index', compact('data', 'componen'));
+    
     }
+
     function create()
     {
         $sopir =  Sopir::whereDoesntHave('travel')->get();
@@ -34,17 +49,7 @@ class TravelController extends Controller
 
     function saveData(Request $req)
     {
-        $data = $req->only([
-            'jenis_mobil',
-            'tranmisi',
-            'nama',
-            'jml_kursi',
-            'tahun_mobil',
-            'sopir_id',
-            'harga',
-            'durasi_sewa',
-        ]);
-
+        $data = $req->only($this->componen);
         // dd($data);
         $url = '/admin/travel';
         try {

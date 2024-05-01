@@ -7,6 +7,8 @@ use App\Models\ObjekWisata;
 use App\Models\Produk;
 use App\Models\Sopir;
 use App\Models\Pesanan;
+use App\Models\Travel;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Exception;
@@ -14,10 +16,23 @@ use Illuminate\Support\Carbon;
 
 class PesananController extends Controller
 {
+    public $componen = [
+        'tanggal',
+        'jam',
+        'user_id',
+        'jumlah_wisatawan',
+        'travel_id',
+    ];
+
     function index()
     {
-        $data = Pesanan::all();
-        return view('admin.pesanan.index', compact('data'));
+        $data = Pesanan::with('user', 'travel')->get();
+        $this->componen[] = 'status';
+        $componen = $this->componen;
+        array_unshift($componen, 'id');
+        // dd($componen);
+
+        return view('admin.pesanan.index', compact('data', 'componen'));
     }
     function create()
     {
@@ -27,25 +42,34 @@ class PesananController extends Controller
     function edit(Request $req)
     {
 
+        $user = User::all();
+        $travel = Travel::all();
+        $objek = ObjekWisata::all();
         $data = Pesanan::findOrFail($req->_i);
-        return view('admin.pesanan.edit', compact('data'));
+        $objek_terpilih = $data->objek_wisata()->get(); // Menggunakan get() untuk mendapatkan hasil query
+        // dd($objek_terpilih);
+
+        return view('admin.pesanan.edit', compact('data','user','travel','objek','objek_terpilih'));
+    }
+    function selesaikan(Request $req)
+    {
+        $data = Pesanan::findOrFail($req->_i);
+        $data->update([
+            'status' => 'selesai'
+        ]);
+        return redirect()->to('/admin/pesanan');
     }
 
     function saveData(Request $req)
     {
-        $data = $req->only([
-            'tanggal',
-            'jam',
-            'user_id',
-            'jumlah_wisatawan',
-            'travel_id',
-        ]);
+        $data = $req->only($this->componen);
 
         $url = '/admin/pesanan';
         try {
             if ($req->has('_i')) {
                 $e = Pesanan::findOrFail($req->_i);
-                $pesanan = $e->update($data);
+                $e->update($data);
+                $pesanan = $e; 
             } else {
                 $pesanan = Pesanan::create($data);
             }

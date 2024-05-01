@@ -27,10 +27,12 @@ class User extends Authenticatable
         'password',
         'role',
         'google_id',
-        'status'
+        'jenis_kelamin',
+        'no_tlp',
+        'alamat',
     ];
 
-    protected $role = ['admin','operator', 'pemilik'];
+    protected $role = ['admin','wisatawan', 'pemilik'];
 
     protected $dates = ['deleted_at'];
     // protected static $soft_cascade = ['customer'];

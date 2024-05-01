@@ -22,38 +22,71 @@
                 </div>
                 <div class="card-body">
                     <table id="example1" class="table table-bordered table-striped">
+                        @php
+                            $customLabels = [
+                                'user_id' => 'Wisatawan', // Menyimpan perubahan dari 'wisatawan' menjadi 'user'
+                                'id' => 'Transaksi', // Menyimpan perubahan dari 'wisatawan' menjadi 'user'
+                                // Tambahkan custom labeling untuk kolom lain jika diperlukan
+                            ];
+                        @endphp
+
                         <thead>
                             <tr style="text-align: center">
                                 <th style="width: 20px">No</th>
-                                <th>Nama</th>
-                                <th>Umur</th>
-                                <th>Jenis Kelamin</th>
-                                <th>Foto</th>
+                                @foreach ($componen as $cn)
+                                    @php
+                                        $customLabel = array_key_exists($cn, $customLabels)
+                                            ? $customLabels[$cn]
+                                            : ucwords(str_replace('_', ' ', preg_replace('/_id$/', '', $cn)));
+                                    @endphp
+                                    <th>{{ $customLabel }}</th>
+                                @endforeach
                                 <th style="width: 20px"><i class="fas fa-cogs"></i></th>
                             </tr>
                         </thead>
+
                         <tbody>
                             @php
                                 $x = 1;
-                                $columnCount = count($data->first() ? $data->first()->toArray() : []);
+                                $customFormats = [
+                                    'id' => fn($value) => 'TRX00000' . $value,
+                                    'biaya_masuk' => fn($value) => nominal($value),
+                                    'tanggal' => fn($value) => tgl($value),
+                                    // 'user_id' => fn($value) => $value->user->name ?? '',
+                                    // 'travel_id' => fn($value) => ($value->travel->nama ?? ''),
+                                ];
                             @endphp
                             @foreach ($data as $val)
                                 <tr>
                                     <td>{{ $x++ }}</td>
-                                    <td>{{ $val->nama}}</td>
-                                    <td>{{ $val->umur}} Tahun</td>
-                                    <td>{{ $val->jk}}</td>
-                                    <td>{{ $val->foto}}</td>
-                                    <td style="text-align: center"> <a href="#" class="nav-link has-dropdown"
-                                            data-toggle="dropdown"><i class="fa fa-ellipsis-h "
-                                                style="color: #777778"></i></a>
+                                    @foreach ($componen as $cn)
+                                        <td>
+                                            @if (array_key_exists($cn, $customFormats))
+                                                {{ $customFormats[$cn]($val->$cn) }}
+                                            @elseif ($cn == 'user_id')
+                                                {{ $val->user->name ?? '' }}
+                                            @elseif ($cn == 'travel_id')
+                                                {{ $val->travel->nama ?? '' }}
+                                            @else
+                                                {{ $val->$cn }}
+                                            @endif
+                                        </td>
+                                    @endforeach
+                                    <td style="text-align: center">
+                                        <div class="nav-link has-dropdown" data-toggle="dropdown">
+                                            <i class="fa fa-ellipsis-h" style="color: #777778"></i>
+                                        </div>
                                         <ul class="dropdown-menu">
+                                            @if ($val->status == 'disetujui')
+                                                <li><a href="/admin/pesanan/selesaikan?_i={{ $val->id }}"
+                                                        class="nav-link">Konfirmasi Selesai</a></li>
+                                            @endif
+
                                             <li><a href="/admin/pesanan/edit?_i={{ $val->id }}"
                                                     class="nav-link">Edit</a></li>
-                                            <li> <a href="#" id="delete-data" data-id={{ $val->id }}
-                                                    class="nav-link" data-toggle="modal"
+                                            <li><a href="#" class="nav-link delete-data"
+                                                    data-id="{{ $val->id }}" data-toggle="modal"
                                                     data-target="#deleteModal">Delete</a></li>
-                                            </a></li>
                                         </ul>
                                     </td>
                                 </tr>

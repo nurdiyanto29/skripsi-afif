@@ -116,20 +116,14 @@
     <script src="{{ asset('image-uploader-master/dist/image-uploader.min.js') }}"></script>
     <script>
         $(document).ready(function() {
-            var preloadedImages = [];
-            @foreach ($data->foto_travel as $foto)
-                preloadedImages.push({
-                    src: '<?php echo files_folder($foto->created_at, $foto->disk_name); ?>',
-                    file: '<?php echo $foto->disk_name; ?>'
-                });
-            @endforeach
-
             $('.input-images').imageUploader({
-                preloaded: preloadedImages,
+                preloaded: [{
+                    src: '<?php echo files_folder($data->foto_travel->created_at, $data->foto_travel->disk_name); ?>', // Ganti ini dengan pemanggilan fungsi files_folder yang sesuai
+                }],
                 extensions: [".jpg", ".jpeg", ".png", ".gif", ".svg"],
                 imagesInputName: "foto_travel",
-                maxFileSize: 5 * 1024 *
-                    1024, // Ukuran maksimum file dalam bytes (di sini, 5 MB)
+                maxFiles: 1,
+                maxFileSize: 5 * 1024 * 1024, // Ukuran maksimum file dalam bytes (di sini, 5 MB)
                 minWidth: 800, // Lebar maksimum gambar dalam piksel
                 maxHeight: 600, // Tinggi maksimum gambar dalam piksel
             });

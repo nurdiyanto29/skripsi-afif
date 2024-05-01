@@ -63,7 +63,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::mb2pz6loBXeMAG7y',
+            '_route' => 'generated::DzFM0qDc9K2fPqfe',
           ),
           1 => NULL,
           2 => 
@@ -83,7 +83,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::qltW0NJ0ngBywebc',
+            '_route' => 'generated::kp6N5FutF917hCnS',
           ),
           1 => NULL,
           2 => 
@@ -622,7 +622,264 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
+      '/register' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'getregister',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/post_register' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'post_register',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
       '/' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'wisatawan.index',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/destinasi' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'wisatawan.destinasi',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/destinasi_detail' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'wisatawan.destinasi_detail',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/booking' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'wisatawan.booking',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/pesan_travel' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'wisatawan.pesan_travel',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/cari_travel' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'wisatawan.cari_travel',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/buat_pesanan' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'wisatawan.buat_pesanan',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/pembayaran' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'wisatawan.pembayaran',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/proses_bayar' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'wisatawan.proses_bayar',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/pesanan' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'wisatawan.pesanan',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/etiket' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'wisatawan.etiket',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/admin' => 
       array (
         0 => 
         array (
@@ -1127,6 +1384,26 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
+      '/admin/pesanan/selesaikan' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'admin.pesanan.selesaikan',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
       '/admin/pesanan/delete' => 
       array (
         0 => 
@@ -1134,6 +1411,279 @@ app('router')->setCompiledRoutes(
           0 => 
           array (
             '_route' => 'admin.pesanan.delete',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/admin/pembayaran' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'admin.pembayaran.index',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/admin/pembayaran/create' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'admin.pembayaran.create',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/admin/pembayaran/store' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'admin.pembayaran.store',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/admin/pembayaran/update' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'admin.pembayaran.update',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/admin/pembayaran/edit' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'admin.pembayaran.edit',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/admin/pembayaran/delete' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'admin.pembayaran.delete',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/admin/pembayaran/show' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'admin.pembayaran.show',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/admin/pembayaran/konfirmasi' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'admin.pembayaran.konfirmasi',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/admin/wisatawan' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'admin.wisatawan.index',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/admin/wisatawan/create' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'admin.wisatawan.create',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/admin/wisatawan/store' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'admin.wisatawan.store',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/admin/wisatawan/update' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'admin.wisatawan.update',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/admin/wisatawan/edit' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'admin.wisatawan.edit',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/admin/wisatawan/delete' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'admin.wisatawan.delete',
           ),
           1 => NULL,
           2 => 
@@ -1168,7 +1718,7 @@ app('router')->setCompiledRoutes(
     ),
     2 => 
     array (
-      0 => '{^(?|/livewire/message/([^/]++)(*:33)|/([^/]++)/livewire/message/([^/]++)(*:75)|/livewire/preview\\-file/([^/]++)(*:114)|/a(?|pi/(?|lapangan(?|/(?|show/([^/]++)(*:161)|update/([^/]++)(*:184)|delete/([^/]++)(*:207))|_detail/(?|show/([^/]++)(*:240)|update/([^/]++)(*:263)|delete/([^/]++)(*:286)))|jadwal/(?|show/([^/]++)(*:319)|update/([^/]++)(*:342)|delete/([^/]++)(*:365))|user/(?|show/([^/]++)(*:395)|update/([^/]++)(*:418)|delete/([^/]++)(*:441))|pe(?|sanan/(?|show/([^/]++)(*:477)|update/([^/]++)(*:500)|delete/([^/]++)(*:523))|mbayaran/(?|show/([^/]++)(*:557)|update/([^/]++)(*:580)|delete/([^/]++)(*:603))))|dmin/(?|sopir/cek/([^/]++)(*:640)|objek_wisata/cek/([^/]++)(*:673)|travel/cek/([^/]++)(*:700)|pesanan/cek/([^/]++)(*:728))))/?$}sDu',
+      0 => '{^(?|/livewire/message/([^/]++)(*:33)|/([^/]++)/livewire/message/([^/]++)(*:75)|/livewire/preview\\-file/([^/]++)(*:114)|/a(?|pi/(?|lapangan(?|/(?|show/([^/]++)(*:161)|update/([^/]++)(*:184)|delete/([^/]++)(*:207))|_detail/(?|show/([^/]++)(*:240)|update/([^/]++)(*:263)|delete/([^/]++)(*:286)))|jadwal/(?|show/([^/]++)(*:319)|update/([^/]++)(*:342)|delete/([^/]++)(*:365))|user/(?|show/([^/]++)(*:395)|update/([^/]++)(*:418)|delete/([^/]++)(*:441))|pe(?|sanan/(?|show/([^/]++)(*:477)|update/([^/]++)(*:500)|delete/([^/]++)(*:523))|mbayaran/(?|show/([^/]++)(*:557)|update/([^/]++)(*:580)|delete/([^/]++)(*:603))))|dmin/(?|sopir/cek/([^/]++)(*:640)|objek_wisata/cek/([^/]++)(*:673)|travel/cek/([^/]++)(*:700)|pe(?|sanan/cek/([^/]++)(*:731)|mbayaran/cek/([^/]++)(*:760))|wisatawan/cek/([^/]++)(*:791))))/?$}sDu',
     ),
     3 => 
     array (
@@ -1711,13 +2261,59 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      728 => 
+      731 => 
       array (
         0 => 
         array (
           0 => 
           array (
             '_route' => 'admin.pesanan.cek',
+          ),
+          1 => 
+          array (
+            0 => 'id',
+          ),
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      760 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'admin.pembayaran.cek',
+          ),
+          1 => 
+          array (
+            0 => 'id',
+          ),
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      791 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'admin.wisatawan.cek',
           ),
           1 => 
           array (
@@ -1911,7 +2507,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::mb2pz6loBXeMAG7y' => 
+    'generated::DzFM0qDc9K2fPqfe' => 
     array (
       'methods' => 
       array (
@@ -1923,7 +2519,7 @@ app('router')->setCompiledRoutes(
       array (
         'uses' => 'Livewire\\Controllers\\LivewireJavaScriptAssets@source',
         'controller' => 'Livewire\\Controllers\\LivewireJavaScriptAssets@source',
-        'as' => 'generated::mb2pz6loBXeMAG7y',
+        'as' => 'generated::DzFM0qDc9K2fPqfe',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1939,7 +2535,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::qltW0NJ0ngBywebc' => 
+    'generated::kp6N5FutF917hCnS' => 
     array (
       'methods' => 
       array (
@@ -1951,7 +2547,7 @@ app('router')->setCompiledRoutes(
       array (
         'uses' => 'Livewire\\Controllers\\LivewireJavaScriptAssets@maps',
         'controller' => 'Livewire\\Controllers\\LivewireJavaScriptAssets@maps',
-        'as' => 'generated::qltW0NJ0ngBywebc',
+        'as' => 'generated::kp6N5FutF917hCnS',
       ),
       'fallback' => false,
       'defaults' => 
@@ -3640,6 +4236,79 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
+    'getregister' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'register',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+        ),
+        'uses' => 'App\\Http\\Controllers\\AuthController@register',
+        'controller' => 'App\\Http\\Controllers\\AuthController@register',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'getregister',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'post_register' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'post_register',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+        ),
+        'uses' => 'App\\Http\\Controllers\\AuthController@post_register',
+        'controller' => 'App\\Http\\Controllers\\AuthController@post_register',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'post_register',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
     'postlogin' => 
     array (
       'methods' => 
@@ -3676,7 +4345,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'admin.index' => 
+    'wisatawan.index' => 
     array (
       'methods' => 
       array (
@@ -3684,6 +4353,421 @@ app('router')->setCompiledRoutes(
         1 => 'HEAD',
       ),
       'uri' => '/',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+        ),
+        'uses' => 'App\\Http\\Controllers\\WisatawanPageController@index',
+        'controller' => 'App\\Http\\Controllers\\WisatawanPageController@index',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'wisatawan.index',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'wisatawan.destinasi' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'destinasi',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+        ),
+        'uses' => 'App\\Http\\Controllers\\WisatawanPageController@destinasi',
+        'controller' => 'App\\Http\\Controllers\\WisatawanPageController@destinasi',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'wisatawan.destinasi',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'wisatawan.destinasi_detail' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'destinasi_detail',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+        ),
+        'uses' => 'App\\Http\\Controllers\\WisatawanPageController@destinasi_detail',
+        'controller' => 'App\\Http\\Controllers\\WisatawanPageController@destinasi_detail',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'wisatawan.destinasi_detail',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'wisatawan.booking' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'booking',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+        ),
+        'uses' => 'App\\Http\\Controllers\\WisatawanPageController@booking',
+        'controller' => 'App\\Http\\Controllers\\WisatawanPageController@booking',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'wisatawan.booking',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'wisatawan.pesan_travel' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'pesan_travel',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'cekAuth:wisatawan',
+        ),
+        'uses' => 'App\\Http\\Controllers\\WisatawanPageController@pesan_travel',
+        'controller' => 'App\\Http\\Controllers\\WisatawanPageController@pesan_travel',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'wisatawan.pesan_travel',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'wisatawan.cari_travel' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'cari_travel',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+        ),
+        'uses' => 'App\\Http\\Controllers\\WisatawanPageController@cari_travel',
+        'controller' => 'App\\Http\\Controllers\\WisatawanPageController@cari_travel',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'wisatawan.cari_travel',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'wisatawan.buat_pesanan' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'buat_pesanan',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+        ),
+        'uses' => 'App\\Http\\Controllers\\WisatawanPageController@buat_pesanan',
+        'controller' => 'App\\Http\\Controllers\\WisatawanPageController@buat_pesanan',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'wisatawan.buat_pesanan',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'wisatawan.pembayaran' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'pembayaran',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'cekAuth:wisatawan',
+        ),
+        'uses' => 'App\\Http\\Controllers\\WisatawanPageController@pembayaran',
+        'controller' => 'App\\Http\\Controllers\\WisatawanPageController@pembayaran',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'wisatawan.pembayaran',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'wisatawan.proses_bayar' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'proses_bayar',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'cekAuth:wisatawan',
+        ),
+        'uses' => 'App\\Http\\Controllers\\WisatawanPageController@proses_bayar',
+        'controller' => 'App\\Http\\Controllers\\WisatawanPageController@proses_bayar',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'wisatawan.proses_bayar',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'wisatawan.pesanan' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'pesanan',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'cekAuth:wisatawan',
+        ),
+        'uses' => 'App\\Http\\Controllers\\WisatawanPageController@pesanan',
+        'controller' => 'App\\Http\\Controllers\\WisatawanPageController@pesanan',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'wisatawan.pesanan',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'wisatawan.etiket' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'etiket',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'cekAuth:wisatawan',
+        ),
+        'uses' => 'App\\Http\\Controllers\\WisatawanPageController@etiket',
+        'controller' => 'App\\Http\\Controllers\\WisatawanPageController@etiket',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'wisatawan.etiket',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'admin.index' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'admin',
       'action' => 
       array (
         'middleware' => 
@@ -4795,6 +5879,45 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
+    'admin.pesanan.selesaikan' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'admin/pesanan/selesaikan',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'cekAuth:admin,operator',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Admin\\PesananController@selesaikan',
+        'controller' => 'App\\Http\\Controllers\\Admin\\PesananController@selesaikan',
+        'as' => 'admin.pesanan.selesaikan',
+        'namespace' => NULL,
+        'prefix' => 'admin/pesanan',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
     'admin.pesanan.delete' => 
     array (
       'methods' => 
@@ -4854,6 +5977,623 @@ app('router')->setCompiledRoutes(
         'as' => 'admin.pesanan.cek',
         'namespace' => NULL,
         'prefix' => 'admin/pesanan',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'admin.pembayaran.index' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'admin/pembayaran',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'cekAuth:admin,operator',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Admin\\PembayaranController@index',
+        'controller' => 'App\\Http\\Controllers\\Admin\\PembayaranController@index',
+        'as' => 'admin.pembayaran.index',
+        'namespace' => NULL,
+        'prefix' => 'admin/pembayaran',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'admin.pembayaran.create' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'admin/pembayaran/create',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'cekAuth:admin,operator',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Admin\\PembayaranController@create',
+        'controller' => 'App\\Http\\Controllers\\Admin\\PembayaranController@create',
+        'as' => 'admin.pembayaran.create',
+        'namespace' => NULL,
+        'prefix' => 'admin/pembayaran',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'admin.pembayaran.store' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'admin/pembayaran/store',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'cekAuth:admin,operator',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Admin\\PembayaranController@store',
+        'controller' => 'App\\Http\\Controllers\\Admin\\PembayaranController@store',
+        'as' => 'admin.pembayaran.store',
+        'namespace' => NULL,
+        'prefix' => 'admin/pembayaran',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'admin.pembayaran.update' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'admin/pembayaran/update',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'cekAuth:admin,operator',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Admin\\PembayaranController@update',
+        'controller' => 'App\\Http\\Controllers\\Admin\\PembayaranController@update',
+        'as' => 'admin.pembayaran.update',
+        'namespace' => NULL,
+        'prefix' => 'admin/pembayaran',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'admin.pembayaran.edit' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'admin/pembayaran/edit',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'cekAuth:admin,operator',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Admin\\PembayaranController@edit',
+        'controller' => 'App\\Http\\Controllers\\Admin\\PembayaranController@edit',
+        'as' => 'admin.pembayaran.edit',
+        'namespace' => NULL,
+        'prefix' => 'admin/pembayaran',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'admin.pembayaran.delete' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'admin/pembayaran/delete',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'cekAuth:admin,operator',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Admin\\PembayaranController@destroy',
+        'controller' => 'App\\Http\\Controllers\\Admin\\PembayaranController@destroy',
+        'as' => 'admin.pembayaran.delete',
+        'namespace' => NULL,
+        'prefix' => 'admin/pembayaran',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'admin.pembayaran.cek' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'admin/pembayaran/cek/{id}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'cekAuth:admin,operator',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Admin\\PembayaranController@cek',
+        'controller' => 'App\\Http\\Controllers\\Admin\\PembayaranController@cek',
+        'as' => 'admin.pembayaran.cek',
+        'namespace' => NULL,
+        'prefix' => 'admin/pembayaran',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'admin.pembayaran.show' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'admin/pembayaran/show',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'cekAuth:admin,operator',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Admin\\PembayaranController@show',
+        'controller' => 'App\\Http\\Controllers\\Admin\\PembayaranController@show',
+        'as' => 'admin.pembayaran.show',
+        'namespace' => NULL,
+        'prefix' => 'admin/pembayaran',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'admin.pembayaran.konfirmasi' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'admin/pembayaran/konfirmasi',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'cekAuth:admin,operator',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Admin\\PembayaranController@konfirmasi',
+        'controller' => 'App\\Http\\Controllers\\Admin\\PembayaranController@konfirmasi',
+        'as' => 'admin.pembayaran.konfirmasi',
+        'namespace' => NULL,
+        'prefix' => 'admin/pembayaran',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'admin.wisatawan.index' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'admin/wisatawan',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'cekAuth:admin,operator',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Admin\\WisatawanController@index',
+        'controller' => 'App\\Http\\Controllers\\Admin\\WisatawanController@index',
+        'as' => 'admin.wisatawan.index',
+        'namespace' => NULL,
+        'prefix' => 'admin/wisatawan',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'admin.wisatawan.create' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'admin/wisatawan/create',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'cekAuth:admin,operator',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Admin\\WisatawanController@create',
+        'controller' => 'App\\Http\\Controllers\\Admin\\WisatawanController@create',
+        'as' => 'admin.wisatawan.create',
+        'namespace' => NULL,
+        'prefix' => 'admin/wisatawan',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'admin.wisatawan.store' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'admin/wisatawan/store',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'cekAuth:admin,operator',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Admin\\WisatawanController@store',
+        'controller' => 'App\\Http\\Controllers\\Admin\\WisatawanController@store',
+        'as' => 'admin.wisatawan.store',
+        'namespace' => NULL,
+        'prefix' => 'admin/wisatawan',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'admin.wisatawan.update' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'admin/wisatawan/update',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'cekAuth:admin,operator',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Admin\\WisatawanController@update',
+        'controller' => 'App\\Http\\Controllers\\Admin\\WisatawanController@update',
+        'as' => 'admin.wisatawan.update',
+        'namespace' => NULL,
+        'prefix' => 'admin/wisatawan',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'admin.wisatawan.edit' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'admin/wisatawan/edit',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'cekAuth:admin,operator',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Admin\\WisatawanController@edit',
+        'controller' => 'App\\Http\\Controllers\\Admin\\WisatawanController@edit',
+        'as' => 'admin.wisatawan.edit',
+        'namespace' => NULL,
+        'prefix' => 'admin/wisatawan',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'admin.wisatawan.delete' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'admin/wisatawan/delete',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'cekAuth:admin,operator',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Admin\\WisatawanController@destroy',
+        'controller' => 'App\\Http\\Controllers\\Admin\\WisatawanController@destroy',
+        'as' => 'admin.wisatawan.delete',
+        'namespace' => NULL,
+        'prefix' => 'admin/wisatawan',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'admin.wisatawan.cek' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'admin/wisatawan/cek/{id}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'cekAuth:admin,operator',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Admin\\WisatawanController@cek',
+        'controller' => 'App\\Http\\Controllers\\Admin\\WisatawanController@cek',
+        'as' => 'admin.wisatawan.cek',
+        'namespace' => NULL,
+        'prefix' => 'admin/wisatawan',
         'where' => 
         array (
         ),

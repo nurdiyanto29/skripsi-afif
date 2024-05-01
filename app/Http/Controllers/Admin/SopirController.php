@@ -24,15 +24,7 @@ class SopirController extends Controller
     }
     function edit(Request $req)
     {
-
         $data = Sopir::findOrFail($req->_i);
-
-
-        // if ($data->foto_sopir->disk_name ?? null) {
-        //     $foto = files_folder($data->foto_sopir->created_at, $data->foto_sopir->disk_name);
-        // }
-
-
         return view('admin.sopir.edit', compact('data'));
     }
 

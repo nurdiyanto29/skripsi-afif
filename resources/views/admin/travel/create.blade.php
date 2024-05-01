@@ -37,14 +37,7 @@
         <div wire:loading class="wire-loading text-warning">
             <span class="fa fa-spin fa-spinner "></span> Sedang memproses...
         </div>
-        'jenis_mobil'
-        'tranmisi'
-        'nama'
-        'jml_kursi'
-        'tahun_mobil'
-        'sopir_id'
-        'harga'
-        'durasi_sewa'
+ 
         <div class="col-8">
             <h5 class="mt-4 mb-2">Tambah Data</h5>
             <form action="{{ url('admin/travel/store') }}" name="form" id="form" method="post"

@@ -43,7 +43,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <img src="{{ asset('frontend/login/images/undraw_remotely_2j6y.svg') }}" alt="Image"
+                    <img src="https://www.jogjasuper.co.id/wp-content/uploads/2023/01/lokasi-Pantai-Slili.jpg" alt="Image"
+
+                    {{-- <img src="{{ asset('frontend/login/images/undraw_remotely_2j6y.svg') }}" alt="Image" --}}
                         class="img-fluid">
                 </div>
                 <div class="col-md-6 contents">
@@ -101,7 +103,11 @@
                                     </div>
                                 </div>
                                  --}}
-                            </form>
+                            </form><br>
+                            <div style="text-align: center">
+                                <p>Belum Punya akun?</p> 
+                                <a href="/register">Register</a>
+                            </div>
                         </div>
                     </div>
 

@@ -88,18 +88,21 @@
     <link rel="stylesheet" href="{{ asset('image-uploader-master/dist/image-uploader.min.css') }}">
     <script src="{{ asset('image-uploader-master/dist/image-uploader.min.js') }}"></script>
     <script>
-        $(document).ready(function() {
-            $('.input-images').imageUploader({
-                preloaded: [{
-                    src: '<?php echo files_folder($data->foto_sopir->created_at, $data->foto_sopir->disk_name); ?>', // Ganti ini dengan pemanggilan fungsi files_folder yang sesuai
-                }],
-                extensions: [".jpg", ".jpeg", ".png", ".gif", ".svg"],
-                imagesInputName: "foto_sopir",
-                maxFiles: 1,
-                maxFileSize: 5 * 1024 * 1024, // Ukuran maksimum file dalam bytes (di sini, 5 MB)
-                minWidth: 800, // Lebar maksimum gambar dalam piksel
-                maxHeight: 600, // Tinggi maksimum gambar dalam piksel
-            });
-        });
+       $(document).ready(function() {
+    var fotoSopirSrc = '<?php echo $data->foto_sopir ? files_folder($data->foto_sopir->created_at, $data->foto_sopir->disk_name) : null; ?>';
+
+    $('.input-images').imageUploader({
+        preloaded: [{
+            src: fotoSopirSrc,
+        }],
+        extensions: [".jpg", ".jpeg", ".png", ".gif", ".svg"],
+        imagesInputName: "foto_sopir",
+        maxFiles: 1,
+        maxFileSize: 5 * 1024 * 1024, // Ukuran maksimum file dalam bytes (di sini, 5 MB)
+        minWidth: 800, // Lebar maksimum gambar dalam piksel
+        maxHeight: 600, // Tinggi maksimum gambar dalam piksel
+    });
+});
+
     </script>
 @endpush

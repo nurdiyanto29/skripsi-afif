@@ -12,6 +12,52 @@ use Illuminate\Support\Facades\Storage;
 use function PHPUnit\Framework\fileExists;
 
 
+
+function penyebut($nilai) {
+    $nilai = abs($nilai);
+    $huruf = array("", "satu", "dua", "tiga", "empat", "lima", "enam", "tujuh", "delapan", "sembilan", "sepuluh", "sebelas");
+    $temp = "";
+    if ($nilai < 12) {
+        $temp = " ". $huruf[$nilai];
+    } else if ($nilai <20) {
+        $temp = penyebut($nilai - 10). " belas";
+    } else if ($nilai < 100) {
+        $temp = penyebut($nilai/10)." puluh". penyebut($nilai % 10);
+    } else if ($nilai < 200) {
+        $temp = " seratus" . penyebut($nilai - 100);
+    } else if ($nilai < 1000) {
+        $temp = penyebut($nilai/100) . " ratus" . penyebut($nilai % 100);
+    } else if ($nilai < 2000) {
+        $temp = " seribu" . penyebut($nilai - 1000);
+    } else if ($nilai < 1000000) {
+        $temp = penyebut($nilai/1000) . " ribu" . penyebut($nilai % 1000);
+    } else if ($nilai < 1000000000) {
+        $temp = penyebut($nilai/1000000) . " juta" . penyebut($nilai % 1000000);
+    } else if ($nilai < 1000000000000) {
+        $temp = penyebut($nilai/1000000000) . " milyar" . penyebut(fmod($nilai,1000000000));
+    } else if ($nilai < 1000000000000000) {
+        $temp = penyebut($nilai/1000000000000) . " trilyun" . penyebut(fmod($nilai,1000000000000));
+    }
+    return $temp;
+}
+
+function terbilang($nilai) {
+    if($nilai == 0) return;  		
+    $hasil = ($nilai<0 ? 'minus ' : '').trim(penyebut($nilai)).' rupiah';
+    return ucwords($hasil);
+}
+// End template
+
+ function sederhana($string, $length = 100, $end = '...')
+    {
+        if (strlen($string) > $length) {
+            $string = substr($string, 0, $length);
+            $string = substr($string, 0, strrpos($string, ' ')) . $end;
+        }
+        return $string;
+    }
+
+
 function uriaktif($uri = '', $segment = 2)
 {
     if (is_array($uri)) return in_array(Request::segment($segment), $uri) ? 'active' : '';
@@ -36,6 +82,30 @@ function files_folder($tgl, $file = null)
     }
 
     return $fullpath;
+}
+
+
+//modal image
+function ImgModal($id, $title, $content)
+{
+    return <<<HTML
+    <div class="modal fade" id="$id" tabindex="-1" aria-labelledby="${id}Label" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="${id}Label">$title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    $content
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    HTML;
 }
 
 // mengambgil

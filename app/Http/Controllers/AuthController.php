@@ -15,7 +15,6 @@ class AuthController extends Controller
 {
     public function authenticate(Request $request)
     {
-        // dd(1);
         $request->validate([
             'email' => 'required|email',
             'password' => 'required|string'
@@ -24,8 +23,11 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            if (Auth::user()) {
+            if (Auth::user()->role == 'admin') {
               $rdrct = 'admin.index';
+                return redirect()->route($rdrct);
+            }elseif (Auth::user()->role == 'wisatawan') {
+              $rdrct = 'wisatawan.index';
                 return redirect()->route($rdrct);
             } else {
                 Auth::logout();
@@ -57,6 +59,23 @@ class AuthController extends Controller
             return redirect()->route($rdrct);
         }
         return view('auth.login');
+    }
+
+    public function register()
+    {
+        return view('auth.register');
+    }
+    public function post_register(Request $req)
+    {
+        $data =[
+            'name'=> $req->nama,
+            'email'=> $req->email,
+            'no_tlp'=> $req->no_tlp,
+            'password'=> bcrypt($req->password),
+            'alamat'=> ($req->alamat),
+        ];
+        User::create($data);
+        return redirect()->to('login');
     }
 
     private function change_password($req)

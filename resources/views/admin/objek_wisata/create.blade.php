@@ -67,6 +67,12 @@
                         <input type="number" class="form-control" id="biaya_masuk" name="biaya_masuk"
                             value="{{ old('biaya_masuk') }}" required>
                     </div>
+
+                    <div class="form-group col-12">
+                        <label style="color: #6c757d">Foto</label>
+                        <div class="input-images">
+                        </div>
+                    </div>
               
                     
                     
@@ -82,3 +88,21 @@
         </div>
     </div>
 @endsection
+
+@push('js')
+<link rel="stylesheet" href="{{ asset('image-uploader-master/dist/image-uploader.min.css') }}">
+    <script src="{{ asset('image-uploader-master/dist/image-uploader.min.js') }}"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('.input-images').imageUploader({
+                extensions: [".jpg", ".jpeg", ".png", ".gif", ".svg"],
+                imagesInputName: "foto_objek",
+                maxFiles: 1,
+                maxFileSize: 5 * 1024 * 1024, // Ukuran maksimum file dalam bytes (di sini, 5 MB)
+                minWidth: 800, // Lebar maksimum gambar dalam piksel
+                maxHeight: 600 // Tinggi maksimum gambar dalam piksel
+            });
+        });
+    </script>
+@endpush

@@ -16,4 +16,9 @@ class ObjekWisata extends Model
     {
         return $this->belongsToMany(Pesanan::class, 'pesanan_pantai', 'objek_wisata_id', 'pesanan_id');
     }
+
+    function foto_objek()
+    {
+        return $this->morphOne(Attachment::class, 'attachable')->where('flag', 'foto_objek');
+    }
 }

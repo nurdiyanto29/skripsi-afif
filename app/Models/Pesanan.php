@@ -25,8 +25,11 @@ class Pesanan extends Model
     public function pembayaran(){
         return $this->hasOne(Pembayaran::class);
     }
+    public function travel(){
+        return $this->belongsTo(Travel::class);
+    }
     public function objek_wisata()
     {
-        return $this->belongsToMany(Travel::class, 'pesanan_pantai', 'pesanan_id', 'objek_wisata_id');
+        return $this->belongsToMany(ObjekWisata::class, 'pesanan_pantai', 'pesanan_id', 'objek_wisata_id');
     }
 }

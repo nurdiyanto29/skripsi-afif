@@ -11,4 +11,15 @@ class Pembayaran extends Model
 
     protected $table = 'pembayaran';
     protected $guarded = [];
+
+    function foto_pembayaran()
+    {
+        return $this->morphOne(Attachment::class, 'attachable')->where('flag', 'foto_pembayaran');
+    }
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+    public function pesanan(){
+        return $this->belongsTo(Pesanan::class);
+    }
 }

@@ -1,5 +1,8 @@
 @extends('layout.admin')
 
+@push('css')
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.css">
+@endpush
 @section('content')
     @php
         $urlPath = request()->path(); // Mendapatkan path URL saat ini
@@ -40,16 +43,23 @@
                             @foreach ($data as $val)
                                 <tr>
                                     <td>{{ $x++ }}</td>
-                                    <td>{{ $val->nama}}</td>
-                                    <td>{{ $val->umur}} Tahun</td>
-                                    <td>{{ $val->jk}}</td>
-                                    <td>{{ $val->foto}}</td>
+                                    <td>{{ $val->nama }}</td>
+                                    <td>{{ $val->umur }} Tahun</td>
+                                    <td>{{ $val->jk }}</td>
+                                    <td>
+                                        @if ($val->foto_sopir)
+                                        <a href="javascript:void(0)" class="show-image-btn"
+                                            data-url="{{ files_folder($val->foto_sopir->created_at, $val->foto_sopir->disk_name) }}">Tampilkan</a>
+                                    @endif
+                                    </td>
+
+
                                     <td style="text-align: center"> <a href="#" class="nav-link has-dropdown"
                                             data-toggle="dropdown"><i class="fa fa-ellipsis-h "
                                                 style="color: #777778"></i></a>
                                         <ul class="dropdown-menu">
-                                            <li><a href="/admin/sopir/edit?_i={{ $val->id }}"
-                                                    class="nav-link">Edit</a></li>
+                                            <li><a href="/admin/sopir/edit?_i={{ $val->id }}" class="nav-link">Edit</a>
+                                            </li>
                                             <li> <a href="#" id="delete-data" data-id={{ $val->id }}
                                                     class="nav-link" data-toggle="modal"
                                                     data-target="#deleteModal">Delete</a></li>
@@ -64,6 +74,7 @@
             </div>
         </div>
     </div>
+    {{-- {{ImgModal($modalId, $modalTitle, $modalContent)}} --}}
     <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="Delete" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -90,10 +101,27 @@
     </div>
 @endsection
 @push('js')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script>
         $(document).on('click', '#delete-data', function() {
             let id = $(this).attr('data-id');
             $('#id').val(id);
         });
+
+        $(document).on('click', '.show-image-btn', function() {
+            let imageUrl = $(this).data('url');
+            showImage(imageUrl);
+        });
+
+        function showImage(imageUrl) {
+            Swal.fire({
+                imageUrl: imageUrl,
+                // imageWidth: 150,
+                imageHeight: 250,
+                imageAlt: 'Custom image',
+                showConfirmButton: false,
+                showCloseButton: true
+            });
+        }
     </script>
 @endpush

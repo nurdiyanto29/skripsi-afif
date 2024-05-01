@@ -53,16 +53,26 @@
                         <input type="text" class="form-control" id="lokasi" name="lokasi" value="{{ $data->lokasi }}"
                             required>
                     </div>
-                    <div class="form-group col-lg-4">
-                        <label>Atraksi</label>
-                        <input type="text" class="form-control" id="atraksi" name="atraksi" value="{{ $data->atraksi }}"
-                            required>
+                    <div class="form-group col-lg-6">
+                        <label for="atraksi">Atraksi</label>
+                        <textarea class="form-control" id="atraksi" name="atraksi" rows="4" required>{{$data->atraksi }}</textarea>
                     </div>
+                    <div class="form-group col-lg-6">
+                        <label for="deskripsi">Deskripsi</label>
+                        <textarea class="form-control" id="deskripsi" name="deskripsi" rows="4" required>{{ $data->deskripsi }}</textarea>
+                    </div>
+                    
 
                     <div class="form-group col-lg-4">
                         <label>Biaya Masuk</label>
                         <input type="text" class="form-control" id="biaya_masuk" name="biaya_masuk" value="{{ $data->biaya_masuk }}"
                             required>
+                    </div>
+
+                    <div class="form-group col-12">
+                        <label style="color: #6c757d">Foto</label>
+                        <div class="input-images">
+                        </div>
                     </div>
                  
                 
@@ -74,31 +84,24 @@
     </div>
 @endsection
 
+
 @push('js')
-<script>
-    // Script untuk menghapus foto
-    document.getElementById('deletePhoto').addEventListener('click', function() {
-        document.getElementById('currentPhoto').remove();
-        document.getElementById('foto').value = '';
-    });
-
-    // Script untuk mengganti foto saat pengguna memilih file baru
-    document.getElementById('foto').addEventListener('change', function(event) {
-        const file = event.target.files[0];
-        const reader = new FileReader();
-
-        reader.onload = function(e) {
-            const img = document.createElement('img');
-            img.src = e.target.result;
-            img.style.maxWidth = '200px';
-            img.style.maxHeight = '200px';
-
-            const currentPhoto = document.getElementById('currentPhoto');
-            currentPhoto.innerHTML = '';
-            currentPhoto.appendChild(img);
-        };
-
-        reader.readAsDataURL(file);
-    });
-</script>
+    <link rel="stylesheet" href="{{ asset('image-uploader-master/dist/image-uploader.min.css') }}">
+    <script src="{{ asset('image-uploader-master/dist/image-uploader.min.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $('.input-images').imageUploader({
+                preloaded: [{
+                    src: '<?php echo files_folder($data->foto_objek->created_at, $data->foto_objek->disk_name); ?>', // Ganti ini dengan pemanggilan fungsi files_folder yang sesuai
+                }],
+                extensions: [".jpg", ".jpeg", ".png", ".gif", ".svg"],
+                imagesInputName: "foto_objek",
+                maxFiles: 1,
+                maxFileSize: 5 * 1024 * 1024, // Ukuran maksimum file dalam bytes (di sini, 5 MB)
+                minWidth: 800, // Lebar maksimum gambar dalam piksel
+                maxHeight: 600, // Tinggi maksimum gambar dalam piksel
+            });
+        });
+    </script>
 @endpush
+

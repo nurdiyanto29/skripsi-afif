@@ -20,9 +20,14 @@ class Travel extends Model
         return $this->belongsTo(Sopir::class);
     }
 
+    public function pesanan()
+    {
+        return $this->hasMany(Pesanan::class);
+    }
+
     function foto_travel()
     {
-        return $this->morphMany(Attachment::class, 'attachable')->where('flag', 'foto_travel');
+        return $this->morphOne(Attachment::class, 'attachable')->where('flag', 'foto_travel');
     }
 
 }
