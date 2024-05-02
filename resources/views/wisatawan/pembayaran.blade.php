@@ -70,7 +70,7 @@
                                         </tr>
                                         <tr>
                                             <th colspan="2" scope="col">Harga Travel</th>
-                                            <td scope="col">{{ nominal($pesanan->travel->harga) ?? null }}</td>
+                                            <td scope="col">{{ nominal($pesanan->travel->harga ?? NULL) ?? null }}</td>
                                         </tr>
 
                                         <tr>
@@ -82,7 +82,7 @@
                                         <tr>
                                             <th colspan="2" sc3pe="col">Harga Travel</th>
                                             <td style="text-align: right" scope="col">
-                                                {{ nominal($pesanan->travel->harga) ?? null }}</td>
+                                                {{ nominal($pesanan->travel->harga ?? NULL) ?? null }}</td>
                                         </tr>
                                         @php
                                             $total_biaya_masuk = 0;
@@ -103,7 +103,8 @@
                                         <tr>
                                             <th colspan="2">Total Yang harus dibayarkan</th>
                                             <th style="text-align: right">
-                                                {{ nominal($total_biaya_masuk + $pesanan->travel->harga) }}</th>
+                                                {{ nominal(($total_biaya_masuk ?? 0) + ($pesanan->travel->harga ?? 0)) }}
+                                            </th>
                                         </tr>
 
 
@@ -160,7 +161,7 @@
                                 </div>
                             </div>
                             <br>
-                            {{ $total_biaya_masuk + $pesanan->travel->harga }}
+                            {{ $total_biaya_masuk + $pesanan->travel->harga ?? NULL }}
                             <form action="{{ url('proses_bayar') }}" method="Post" enctype="multipart/form-data">
                                 @csrf
                                 <input type="hidden" class="form-control" id="pesanan_id" name="pesanan_id"

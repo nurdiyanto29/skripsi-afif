@@ -48,11 +48,11 @@ class ObjekWisataController extends Controller
                 $e = ObjekWisata::findOrFail($req->_i);
                 $e->update($data);
             } else {
-                ObjekWisata::create($data);
+                $e=ObjekWisata::create($data);
             }
 
             if ($req->hasFile('foto_objek')) {
-                if ($e->foto_objek->count() > 0) $e->foto_objek->delete();
+                if ($e->foto_objek) $e->foto_objek->delete();
                 $gambar = is_array($req->foto_objek) ? $req->foto_objek : [$req->foto_objek];
                 
                 // Menghapus foto yang ada jika ada
@@ -85,6 +85,7 @@ class ObjekWisataController extends Controller
 
     public function destroy(Request $req)
     {
+        // dd($req->id);
         $result = ObjekWisata::findOrfail($req->id);
         $result->delete();
         if ($result) {

@@ -98,5 +98,12 @@
                 maxHeight: 600 // Tinggi maksimum gambar dalam piksel
             });
         });
+        $('form').submit(function() {
+            var inputFile = $('.input-images input[type="file"]');
+            if (inputFile.get(0).files.length === 0) {
+                alert('Mohon unggah gambar.');
+                return false; // Prevent form submission
+            }
+        });
     </script>
 @endpush

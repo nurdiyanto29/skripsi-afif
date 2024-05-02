@@ -124,7 +124,7 @@
 @endsection
 @push('js')
     <script>
-        $(document).on('click', '#delete-data', function() {
+        $(document).on('click', '.delete-data', function() {
             let id = $(this).attr('data-id');
             $('#id').val(id);
         });

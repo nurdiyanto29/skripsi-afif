@@ -45,13 +45,13 @@
                 <div class="row">
                     <div class="form-group col-lg-4">
                         <label>Nama</label>
-                        <input type="text" class="form-control" id="nama" name="nama"
-                            value="{{ old('nama') }}" required>
+                        <input type="text" class="form-control" id="nama" name="nama" value="{{ old('nama') }}"
+                            required>
                     </div>
                     <div class="form-group col-lg-8">
                         <label>Lokasi</label>
-                        <input type="text" class="form-control" id="lokasi" name="lokasi"
-                            value="{{ old('lokasi') }}" required>
+                        <input type="text" class="form-control" id="lokasi" name="lokasi" value="{{ old('lokasi') }}"
+                            required>
                     </div>
                     <div class="form-group col-lg-6">
                         <label for="atraksi">Atraksi</label>
@@ -61,7 +61,7 @@
                         <label for="deskripsi">Deskripsi</label>
                         <textarea class="form-control" id="deskripsi" name="deskripsi" rows="4" required>{{ old('deskripsi') }}</textarea>
                     </div>
-                    
+
                     <div class="form-group col-lg-4">
                         <label>Biaya Masuk</label>
                         <input type="number" class="form-control" id="biaya_masuk" name="biaya_masuk"
@@ -73,15 +73,15 @@
                         <div class="input-images">
                         </div>
                     </div>
-              
-                    
-                    
-                {{-- <div class="form-group col-lg-8">
+
+
+
+                    {{-- <div class="form-group col-lg-8">
                     <label>Gambar</label>
                     <input type="file" class="form-control" id="gambar" name="gambar"
                         value="{{ old('gambar') }}">
                 </div> --}}
-            </div>
+                </div>
                 <!-- /.card-body -->
                 <button type="submit" class="btn btn-primary">Simpan</button>
             </form>
@@ -90,7 +90,7 @@
 @endsection
 
 @push('js')
-<link rel="stylesheet" href="{{ asset('image-uploader-master/dist/image-uploader.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('image-uploader-master/dist/image-uploader.min.css') }}">
     <script src="{{ asset('image-uploader-master/dist/image-uploader.min.js') }}"></script>
 
     <script>
@@ -99,10 +99,19 @@
                 extensions: [".jpg", ".jpeg", ".png", ".gif", ".svg"],
                 imagesInputName: "foto_objek",
                 maxFiles: 1,
+
                 maxFileSize: 5 * 1024 * 1024, // Ukuran maksimum file dalam bytes (di sini, 5 MB)
                 minWidth: 800, // Lebar maksimum gambar dalam piksel
                 maxHeight: 600 // Tinggi maksimum gambar dalam piksel
             });
+        });
+
+        $('form').submit(function() {
+            var inputFile = $('.input-images input[type="file"]');
+            if (inputFile.get(0).files.length === 0) {
+                alert('Mohon unggah gambar.');
+                return false; // Prevent form submission
+            }
         });
     </script>
 @endpush

@@ -154,7 +154,7 @@
                     </tr>
                     <tr>
                         <td>Harga Travel</td>
-                        <td>{{ nominal($pesanan->travel->harga) ?? '-' }}</td>
+                        <td>{{ nominal($pesanan->travel->harga ?? '-') ?? '-' }}</td>
                     </tr>
                 </table>
                 <p>Dengan Rincian Objek Wisata + Biaya Travel</p>
@@ -178,7 +178,8 @@
                     <tr>
                         <th colspan="2">Total dibayarkan</th>
                         <th style="text-align: right">
-                            {{ nominal($total_biaya_masuk + $pesanan->travel->harga) }}</th>
+                            {{ nominal(($total_biaya_masuk ?? 0) + ($pesanan->travel->harga ?? 0)) }}
+</th>
                     </tr>
                 </table>
             </div>

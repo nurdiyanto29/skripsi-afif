@@ -18,64 +18,6 @@
     </div>
 
 
-    <!-- Destination Start -->
-    @if ($objek->count() == 4)
-        <div class="container-xxl py-5 destination">
-            <div class="container">
-                <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                    <h6 class="section-title bg-white text-center text-primary px-3">Destinasi</h6>
-                    <h1 class="mb-5">Destinasi Populer</h1>
-                </div>
-                <div class="row g-3">
-                    <div class="col-lg-7 col-md-6">
-                        <div class="row g-3">
-                            <div class="col-lg-12 col-md-12 wow zoomIn" data-wow-delay="0.1s">
-                                <a class="position-relative d-block overflow-hidden" href="">
-                                    <img class="img-fluid"
-                                        src="{{ files_folder($objek[0]->foto_objek->created_at, $objek[0]->foto_objek->disk_name) }}"
-                                        alt="">
-                                    <div
-                                        class="bg-white text-primary fw-bold position-absolute bottom-0 end-0 m-3 py-1 px-2">
-                                        {{ $objek[0]->nama }}</div>
-                                </a>
-                            </div>
-                            <div class="col-lg-6 col-md-12 wow zoomIn" data-wow-delay="0.3s">
-                                <a class="position-relative d-block overflow-hidden" href="">
-                                    <img class="img-fluid"src="{{ files_folder($objek[1]->foto_objek->created_at, $objek[1]->foto_objek->disk_name) }}"
-                                        alt="">
-                                    <div
-                                        class="bg-white text-primary fw-bold position-absolute bottom-0 end-0 m-3 py-1 px-2">
-                                        {{ $objek[1]->nama ?? '' }}</div>
-                                </a>
-                            </div>
-                            <div class="col-lg-6 col-md-12 wow zoomIn" data-wow-delay="0.5s">
-                                <a class="position-relative d-block overflow-hidden" href="">
-                                    <img class="img-fluid"
-                                        src="{{ files_folder($objek[2]->foto_objek->created_at, $objek[2]->foto_objek->disk_name) }}"
-                                        alt="">
-                                    <div
-                                        class="bg-white text-primary fw-bold position-absolute bottom-0 end-0 m-3 py-1 px-2">
-                                        {{ $objek[2]->nama ?? '' }}</div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-5 col-md-6 wow zoomIn" data-wow-delay="0.7s" style="min-height: 350px;">
-                        <a class="position-relative d-block h-100 overflow-hidden" href="">
-                            <img class="img-fluid position-absolute w-100 h-100"
-                                src="{{ files_folder($objek[3]->foto_objek->created_at, $objek[3]->foto_objek->disk_name) }}"
-                                alt="" style="object-fit: cover;">
-                            <div class="bg-white text-primary fw-bold position-absolute bottom-0 end-0 m-3 py-1 px-2">
-                                {{ $objek[3]->nama ?? '' }}</div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    @endif
-    <!-- Destination Start -->
-
-
     <!-- Package Start -->
     <div class="container-xxl py-5">
         <div class="container">

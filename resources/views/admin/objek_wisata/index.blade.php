@@ -59,8 +59,8 @@
                                         <ul class="dropdown-menu">
                                             <li><a href="/admin/objek_wisata/edit?_i={{ $val->id }}"
                                                     class="nav-link">Edit</a></li>
-                                            <li><a href="#" class="nav-link delete-data" data-id="{{ $val->id }}"
-                                                    data-toggle="modal" data-target="#deleteModal">Delete</a></li>
+                                                    <li><a href="#" class="nav-link delete-data" data-id="{{ $val->id }}" data-toggle="modal" data-target="#deleteModal">Delete</a></li>
+
                                         </ul>
                                     </td>
                                 </tr>
@@ -98,7 +98,7 @@
 @endsection
 @push('js')
     <script>
-        $(document).on('click', '#delete-data', function() {
+        $(document).on('click', '.delete-data', function() {
             let id = $(this).attr('data-id');
             $('#id').val(id);
         });
