@@ -1,5 +1,8 @@
 @extends('frontend.main')
 
+@push('css')
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+@endpush
 @section('content')
     <div class="container-fluid bg-primary py-5 mb-5 hero-header">
         <div class="container py-5">
@@ -122,7 +125,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="tanggal">Pilih Tanggal Liburan</label>
-                                <input type="date" class="form-control" id="tanggal" name="tanggal" value=""
+                                <input type="text" class="form-control" id="tanggal" name="tanggal" value=""
                                     required>
                             </div>
                             <div class="form-group">
@@ -137,81 +140,6 @@
             </div>
 
             <!-- Ubah area teks objek wisata dipilih menjadi input hidden dengan name="objek_id[]" -->
-
-            <script>
-                // Mendapatkan elemen input tanggal
-                var inputTanggal = document.getElementById('tanggal');
-
-                // Mendapatkan tanggal hari ini
-                var tanggalHariIni = new Date();
-                tanggalHariIni.setDate(tanggalHariIni.getDate() + 1); // Menambahkan 1 hari untuk mendapatkan tanggal besok
-
-                // Mengonversi tanggal hari ini menjadi string dengan format YYYY-MM-DD
-                var tanggalBesok = tanggalHariIni.toISOString().split('T')[0];
-
-                // Mengatur atribut min dari elemen input tanggal
-                inputTanggal.setAttribute('min', tanggalBesok);
-
-                document.getElementById('jml_orang').addEventListener('input', function() {
-                    var inputVal = parseInt(this.value);
-                    var maxKursi = parseInt(document.getElementById('max_kursi').textContent);
-
-                    if (inputVal > maxKursi) {
-                        alert("Maaf, jumlah orang tidak boleh melebihi jumlah kursi yang tersedia.");
-                        this.value = maxKursi; // Set nilai input menjadi nilai maksimal
-                    }
-                });
-
-
-                // Array untuk menyimpan id objek wisata yang dipilih
-                var selectedObjekIds = [];
-
-                // Fungsi untuk menangani pilihan objek wisata
-                function togglePilihObjekWisata(event, id, nama) {
-                    event.preventDefault();
-                    var objekTextarea = document.getElementById('objek_wisata');
-                    var currentContent = objekTextarea.value;
-                    var objekId = 'objek_' + id;
-
-                    // Toggle id objek wisata dalam array selectedObjekIds
-                    var index = selectedObjekIds.indexOf(id);
-                    if (index === -1) {
-                        // Jika belum dipilih, tambahkan ke daftar objek wisata yang dipilih
-                        selectedObjekIds.push(id);
-                    } else {
-                        // Jika sudah dipilih, hapus dari daftar objek wisata yang dipilih
-                        selectedObjekIds.splice(index, 1);
-                    }
-
-                    // Perbarui konten area teks objek wisata yang dipilih
-                    objekTextarea.value = currentContent;
-
-                    // Perbarui nilai input hidden objek_id dengan array id objek wisata yang dipilih
-                    document.getElementById('objek_id').value = selectedObjekIds.join(',');
-
-                    // Ubah tampilan tombol
-                    if (index === -1) {
-                        // Objek wisata dipilih
-                        event.target.innerText = "Batalkan";
-                        event.target.classList.remove('btn-primary');
-                        event.target.classList.add('btn-danger');
-                    } else {
-                        // Objek wisata dibatalkan
-                        event.target.innerText = "Pilih";
-                        event.target.classList.remove('btn-danger');
-                        event.target.classList.add('btn-primary');
-                    }
-                }
-
-                // Fungsi untuk memeriksa apakah ada objek wisata yang dipilih sebelum mengirim formulir
-                function validateForm(event) {
-                    if (selectedObjekIds.length === 0) {
-                        event.preventDefault();
-                        alert("Pilih setidaknya satu objek wisata!");
-                    }
-                }
-            </script>
-
 
 
 
@@ -276,3 +204,109 @@
 
     <!-- Process Start -->
 @endsection
+
+@push('js')
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script>
+      $(function() {
+        $(function() {
+    $.ajax({
+        url: '/get_travel_id/{{ $travel->id }}', // Ganti URL dengan URL yang sesuai di proyek Anda
+        type: 'GET',
+        success: function(response) {
+            var disabledDates = response.pesanan;
+
+            // Mendapatkan tanggal besok
+            var tomorrow = moment().add(1, 'day').format('YYYY-MM-DD');
+
+            $('#tanggal').daterangepicker({
+                singleDatePicker: true,
+                showDropdowns: true,
+                minYear: 2024,
+                maxYear: parseInt(moment().format('YYYY'), 10),
+                locale: {
+                    format: 'YYYY-MM-DD' // Format tanggal Y-M-D
+                },
+                isInvalidDate: function(date) {
+                    var formattedDate = date.format('YYYY-MM-DD');
+                    return disabledDates.includes(formattedDate) || formattedDate < tomorrow;
+                }
+            });
+        }
+    });
+});
+
+});
+
+
+
+
+
+
+
+
+
+
+
+        document.getElementById('jml_orang').addEventListener('input', function() {
+            var inputVal = parseInt(this.value);
+            var maxKursi = parseInt(document.getElementById('max_kursi').textContent);
+
+            if (inputVal > maxKursi) {
+                alert("Maaf, jumlah orang tidak boleh melebihi jumlah kursi yang tersedia.");
+                this.value = maxKursi; // Set nilai input menjadi nilai maksimal
+            }
+        });
+
+
+        // Array untuk menyimpan id objek wisata yang dipilih
+        var selectedObjekIds = [];
+
+        // Fungsi untuk menangani pilihan objek wisata
+        function togglePilihObjekWisata(event, id, nama) {
+            event.preventDefault();
+            var objekTextarea = document.getElementById('objek_wisata');
+            var currentContent = objekTextarea.value;
+            var objekId = 'objek_' + id;
+
+            // Toggle id objek wisata dalam array selectedObjekIds
+            var index = selectedObjekIds.indexOf(id);
+            if (index === -1) {
+                // Jika belum dipilih, tambahkan ke daftar objek wisata yang dipilih
+                selectedObjekIds.push(id);
+            } else {
+                // Jika sudah dipilih, hapus dari daftar objek wisata yang dipilih
+                selectedObjekIds.splice(index, 1);
+            }
+
+            // Perbarui konten area teks objek wisata yang dipilih
+            objekTextarea.value = currentContent;
+
+            // Perbarui nilai input hidden objek_id dengan array id objek wisata yang dipilih
+            document.getElementById('objek_id').value = selectedObjekIds.join(',');
+
+            // Ubah tampilan tombol
+            if (index === -1) {
+                // Objek wisata dipilih
+                event.target.innerText = "Batalkan";
+                event.target.classList.remove('btn-primary');
+                event.target.classList.add('btn-danger');
+            } else {
+                // Objek wisata dibatalkan
+                event.target.innerText = "Pilih";
+                event.target.classList.remove('btn-danger');
+                event.target.classList.add('btn-primary');
+            }
+        }
+
+        // Fungsi untuk memeriksa apakah ada objek wisata yang dipilih sebelum mengirim formulir
+        function validateForm(event) {
+            if (selectedObjekIds.length === 0) {
+                event.preventDefault();
+                alert("Pilih setidaknya satu objek wisata!");
+            }
+        }
+    </script>
+@endpush

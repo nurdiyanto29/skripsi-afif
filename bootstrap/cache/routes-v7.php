@@ -63,7 +63,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::DzFM0qDc9K2fPqfe',
+            '_route' => 'generated::lI2pbTQRxM686KqU',
           ),
           1 => NULL,
           2 => 
@@ -83,7 +83,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::kp6N5FutF917hCnS',
+            '_route' => 'generated::dV6aRBcHGba1KgXa',
           ),
           1 => NULL,
           2 => 
@@ -1718,7 +1718,7 @@ app('router')->setCompiledRoutes(
     ),
     2 => 
     array (
-      0 => '{^(?|/livewire/message/([^/]++)(*:33)|/([^/]++)/livewire/message/([^/]++)(*:75)|/livewire/preview\\-file/([^/]++)(*:114)|/a(?|pi/(?|lapangan(?|/(?|show/([^/]++)(*:161)|update/([^/]++)(*:184)|delete/([^/]++)(*:207))|_detail/(?|show/([^/]++)(*:240)|update/([^/]++)(*:263)|delete/([^/]++)(*:286)))|jadwal/(?|show/([^/]++)(*:319)|update/([^/]++)(*:342)|delete/([^/]++)(*:365))|user/(?|show/([^/]++)(*:395)|update/([^/]++)(*:418)|delete/([^/]++)(*:441))|pe(?|sanan/(?|show/([^/]++)(*:477)|update/([^/]++)(*:500)|delete/([^/]++)(*:523))|mbayaran/(?|show/([^/]++)(*:557)|update/([^/]++)(*:580)|delete/([^/]++)(*:603))))|dmin/(?|sopir/cek/([^/]++)(*:640)|objek_wisata/cek/([^/]++)(*:673)|travel/cek/([^/]++)(*:700)|pe(?|sanan/cek/([^/]++)(*:731)|mbayaran/cek/([^/]++)(*:760))|wisatawan/cek/([^/]++)(*:791))))/?$}sDu',
+      0 => '{^(?|/livewire/message/([^/]++)(*:33)|/([^/]++)/livewire/message/([^/]++)(*:75)|/livewire/preview\\-file/([^/]++)(*:114)|/a(?|pi/(?|lapangan(?|/(?|show/([^/]++)(*:161)|update/([^/]++)(*:184)|delete/([^/]++)(*:207))|_detail/(?|show/([^/]++)(*:240)|update/([^/]++)(*:263)|delete/([^/]++)(*:286)))|jadwal/(?|show/([^/]++)(*:319)|update/([^/]++)(*:342)|delete/([^/]++)(*:365))|user/(?|show/([^/]++)(*:395)|update/([^/]++)(*:418)|delete/([^/]++)(*:441))|pe(?|sanan/(?|show/([^/]++)(*:477)|update/([^/]++)(*:500)|delete/([^/]++)(*:523))|mbayaran/(?|show/([^/]++)(*:557)|update/([^/]++)(*:580)|delete/([^/]++)(*:603))))|dmin/(?|sopir/cek/([^/]++)(*:640)|objek_wisata/cek/([^/]++)(*:673)|travel/cek/([^/]++)(*:700)|pe(?|sanan/cek/([^/]++)(*:731)|mbayaran/cek/([^/]++)(*:760))|wisatawan/cek/([^/]++)(*:791)))|/get_travel_id/([^/]++)(*:824))/?$}sDu',
     ),
     3 => 
     array (
@@ -2329,6 +2329,29 @@ app('router')->setCompiledRoutes(
           5 => true,
           6 => NULL,
         ),
+      ),
+      824 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'generated::LHossBK1nXNqm8im',
+          ),
+          1 => 
+          array (
+            0 => 'travel_id',
+          ),
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
         1 => 
         array (
           0 => NULL,
@@ -2507,7 +2530,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::DzFM0qDc9K2fPqfe' => 
+    'generated::lI2pbTQRxM686KqU' => 
     array (
       'methods' => 
       array (
@@ -2519,7 +2542,7 @@ app('router')->setCompiledRoutes(
       array (
         'uses' => 'Livewire\\Controllers\\LivewireJavaScriptAssets@source',
         'controller' => 'Livewire\\Controllers\\LivewireJavaScriptAssets@source',
-        'as' => 'generated::DzFM0qDc9K2fPqfe',
+        'as' => 'generated::lI2pbTQRxM686KqU',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2535,7 +2558,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::kp6N5FutF917hCnS' => 
+    'generated::dV6aRBcHGba1KgXa' => 
     array (
       'methods' => 
       array (
@@ -2547,7 +2570,7 @@ app('router')->setCompiledRoutes(
       array (
         'uses' => 'Livewire\\Controllers\\LivewireJavaScriptAssets@maps',
         'controller' => 'Livewire\\Controllers\\LivewireJavaScriptAssets@maps',
-        'as' => 'generated::kp6N5FutF917hCnS',
+        'as' => 'generated::dV6aRBcHGba1KgXa',
       ),
       'fallback' => false,
       'defaults' => 
@@ -4745,6 +4768,45 @@ app('router')->setCompiledRoutes(
         array (
         ),
         'as' => 'wisatawan.etiket',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'generated::LHossBK1nXNqm8im' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'get_travel_id/{travel_id}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'cekAuth:wisatawan',
+        ),
+        'uses' => 'App\\Http\\Controllers\\WisatawanPageController@getTravelId',
+        'controller' => 'App\\Http\\Controllers\\WisatawanPageController@getTravelId',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'generated::LHossBK1nXNqm8im',
       ),
       'fallback' => false,
       'defaults' => 

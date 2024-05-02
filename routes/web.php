@@ -72,6 +72,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/proses_bayar', [WisatawanPageController::class, 'proses_bayar'])->name('wisatawan.proses_bayar');
         Route::get('/pesanan', [WisatawanPageController::class, 'pesanan'])->name('wisatawan.pesanan');
         Route::get('/etiket', [WisatawanPageController::class, 'etiket'])->name('wisatawan.etiket');
+
+        Route::get('/get_travel_id/{travel_id}', [WisatawanPageController::class, 'getTravelId']);
     });
 
 

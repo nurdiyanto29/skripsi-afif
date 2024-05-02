@@ -23,6 +23,10 @@ use Dompdf\Dompdf;
 
 class WisatawanPageController extends Controller
 {
+
+
+
+  
   public function index()
   {
 
@@ -32,15 +36,17 @@ class WisatawanPageController extends Controller
       $query->where('status', 'belum_bayar')
         ->orWhere('status', 'bayar')
         ->orWhere('status', 'disetujui');
-    });
+    })->get();
+    // dd($travel_dipesan);
 
     $not=$travel_dipesan->pluck('id')->toArray();
 
-    $travel = Travel::whereNotIn('id', $not)->get();
+    // $travel = Travel::whereNotIn('id', $not)->get();
+    $travel = Travel::all();
     $data = [
       'objek' => $objek,
       'travel' => $travel,
-      'travel_dipesan' => $travel_dipesan->get(),
+      'travel_dipesan' => [],
     ];
     return view('wisatawan.index', $data);
   }
@@ -99,10 +105,11 @@ class WisatawanPageController extends Controller
 
     $not=$travel_dipesan->pluck('id')->toArray();
 
-    $travel = Travel::whereNotIn('id', $not)->get();
+    // $travel = Travel::whereNotIn('id', $not)->get();
+    $travel = Travel::all();
     $data = [
       'travel' => $travel,
-      'travel_dipesan' => $travel_dipesan->get(),
+      'travel_dipesan' => [],
     ];
     return view('wisatawan.booking', $data);
   }
@@ -183,4 +190,20 @@ class WisatawanPageController extends Controller
     ]);
     return redirect()->to('/pesanan');
   }
+
+  public function getTravelId($travel_id)
+    {
+        $travelId =$travel_id;
+
+        // Mencari pesanan yang memiliki travel ID yang sama dengan yang dikirimkan dalam request
+        $pesanan = Pesanan::where('travel_id', $travelId)
+        ->where('status', 'belum_bayar')
+        ->orWhere('status', 'bayar')
+        ->orWhere('status', 'disetujui')
+        ->pluck('tanggal')->toArray();
+
+        return response()->json(['pesanan' => $pesanan]);
+    }
+
+    
 }

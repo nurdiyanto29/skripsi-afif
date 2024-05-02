@@ -10,6 +10,7 @@
     
 
     @include('frontend.lib')
+    @stack('css')
     
 </head>
 
@@ -43,5 +44,7 @@
     @include('frontend.lib_js')
    
 </body>
+
+@stack('js')
 
 </html>
