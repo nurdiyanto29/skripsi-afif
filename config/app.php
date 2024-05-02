@@ -203,7 +203,6 @@ return [
         //image
         Intervention\Image\ImageServiceProvider::class,
 
-        Maatwebsite\Excel\ExcelServiceProvider::class,
         Weidner\Goutte\GoutteServiceProvider::class,
         
 

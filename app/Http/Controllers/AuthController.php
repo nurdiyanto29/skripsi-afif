@@ -24,10 +24,10 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             if (Auth::user()->role == 'admin') {
-              $rdrct = 'admin.index';
+                $rdrct = 'admin.index';
                 return redirect()->route($rdrct);
-            }elseif (Auth::user()->role == 'wisatawan') {
-              $rdrct = 'wisatawan.index';
+            } elseif (Auth::user()->role == 'wisatawan') {
+                $rdrct = 'wisatawan.index';
                 return redirect()->route($rdrct);
             } else {
                 Auth::logout();
@@ -49,7 +49,7 @@ class AuthController extends Controller
     {
         Auth::logout();
         Session::flush();
-        return redirect()->route('getlogin');
+        return redirect()->to('/');
     }
 
     public function login()
@@ -65,18 +65,51 @@ class AuthController extends Controller
     {
         return view('auth.register');
     }
+
     public function post_register(Request $req)
     {
-        $data =[
-            'name'=> $req->nama,
-            'email'=> $req->email,
-            'no_tlp'=> $req->no_tlp,
-            'password'=> bcrypt($req->password),
-            'alamat'=> ($req->alamat),
+        // Validasi input
+        $req->validate([
+            'nama' => 'required',
+            'email' => 'required|email|unique:users,email',
+            'no_tlp' => 'required',
+            'password' => 'required',
+            'alamat' => 'required',
+        ], [
+            'email.unique' => 'Email sudah digunakan.',
+        ]);
+
+        // Buat data pengguna
+        $data = [
+            'name' => $req->nama,
+            'email' => $req->email,
+            'no_tlp' => $req->no_tlp,
+            'password' => bcrypt($req->password),
+            'alamat' => $req->alamat,
         ];
+
+        // Buat pengguna baru
         User::create($data);
-        return redirect()->to('login');
+
+        // Redirect dengan pesan sukses
+        return redirect()->to('login')->with('success', 'Registrasi berhasil! Silakan masuk.');
     }
+
+    // public function post_register(Request $req)
+    // {
+
+
+    //     // if($req->email)
+    //     $data =[
+    //         'name'=> $req->nama,
+    //         'email'=> $req->email,
+    //         'no_tlp'=> $req->no_tlp,
+    //         'password'=> bcrypt($req->password),
+    //         'alamat'=> ($req->alamat),
+    //     ];
+    //     User::create($data);
+    //     return redirect()->to('login');
+    // }
 
     private function change_password($req)
     {

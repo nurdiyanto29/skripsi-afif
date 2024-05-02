@@ -24,8 +24,6 @@ use Dompdf\Dompdf;
 class WisatawanPageController extends Controller
 {
 
-
-
   
   public function index()
   {

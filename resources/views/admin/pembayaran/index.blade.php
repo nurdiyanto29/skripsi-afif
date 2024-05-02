@@ -68,15 +68,12 @@
                                         </td>
                                     @endforeach
                                     <td style="text-align: center">
-                                        <div class="nav-link has-dropdown" data-toggle="dropdown">
-                                            <i class="fa fa-ellipsis-h" style="color: #777778"></i>
+                                        <div class="btn-group" role="group" aria-label="Basic example">
+                                            <a href="/admin/pembayaran/show?_i={{ $val->id }}" class="btn btn-primary" role="button">Detail</a>
+                                            <button type="button" class="btn btn-danger delete-data" data-id="{{ $val->id }}" data-toggle="modal" data-target="#deleteModal">Delete</button>
                                         </div>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="/admin/pembayaran/show?_i={{ $val->id }}"
-                                                    class="nav-link">Detail</a></li>
-                                            <li><a href="#" class="nav-link delete-data" data-id="{{ $val->id }}"
-                                                    data-toggle="modal" data-target="#deleteModal">Delete</a></li>
-                                        </ul>
+                                        
+                                     
                                     </td>
                                 </tr>
                             @endforeach
@@ -97,7 +94,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('admin.pesanan.delete') }}" method="post">
+                    <form action="{{ route('admin.pembayaran.delete') }}" method="post">
                         @csrf
                         <input type="hidden" name="id" id="id">
                         <p> Apakah Anda yakin ingin menghapus data ?</p>

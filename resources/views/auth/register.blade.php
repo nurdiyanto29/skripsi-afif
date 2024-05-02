@@ -1,149 +1,220 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - codingnepalweb.com -->
+<html lang="en" dir="ltr">
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="{{ asset('frontend/login/fonts/icomoon/style.css') }}">
-
-    <link rel="stylesheet" href="{{ asset('frontend/login/css/owl.carousel.min.css') }}">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{{ asset('frontend/login/css/bootstrap.min.css') }}">
-
-    <!-- Style -->
-    <link rel="stylesheet" href="{{ asset('frontend/login/css/style.css') }}">
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-    </script>
-    <style>
-    
-        .btn-primary {
-            color: #fff;
-            background-color: #6c63ff !important;
-            border-color: #6c63ff !important ;
-        }
-    </style>
-
-
-    <title>Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Registration or Sign Up form in HTML CSS | CodingLab </title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #4070f4;
+    }
+
+    .wrapper {
+        position: relative;
+        max-width: 430px;
+        width: 100%;
+        background: #fff;
+        padding: 34px;
+        border-radius: 6px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .wrapper h2 {
+        position: relative;
+        font-size: 22px;
+        font-weight: 600;
+        color: #333;
+    }
+
+    .wrapper h2::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 3px;
+        width: 28px;
+        border-radius: 12px;
+        background: #4070f4;
+    }
+
+    .wrapper form {
+        margin-top: 30px;
+    }
+
+    .wrapper form .input-box {
+        height: 52px;
+        margin: 18px 0;
+    }
+
+    form .input-box input {
+        height: 100%;
+        width: 100%;
+        outline: none;
+        padding: 0 15px;
+        font-size: 17px;
+        font-weight: 400;
+        color: #333;
+        border: 1.5px solid #C7BEBE;
+        border-bottom-width: 2.5px;
+        border-radius: 6px;
+        transition: all 0.3s ease;
+    }
+
+    .input-box input:focus,
+    .input-box input:valid {
+        border-color: #4070f4;
+    }
+
+    form .policy {
+        display: flex;
+        align-items: center;
+    }
+
+    form h3 {
+        color: #707070;
+        font-size: 14px;
+        font-weight: 500;
+        margin-left: 10px;
+    }
+
+    .input-box.button input {
+        color: #fff;
+        letter-spacing: 1px;
+        border: none;
+        background: #4070f4;
+        cursor: pointer;
+    }
+
+    .input-box.button input:hover {
+        background: #0e4bf1;
+    }
+
+    form .text h3 {
+        color: #333;
+        width: 100%;
+        text-align: center;
+    }
+
+    form .text h3 a {
+        color: #4070f4;
+        text-decoration: none;
+    }
+
+    form .text h3 a:hover {
+        text-decoration: underline;
+    }
+</style>
+
 <body>
-
-
-
-    <div class="content">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <img src="https://www.jogjasuper.co.id/wp-content/uploads/2023/01/lokasi-Pantai-Slili.jpg" alt="Image"
-                    {{-- <img src="{{ asset('frontend/login/images/undraw_remotely_2j6y.svg') }}" alt="Image" --}}
-                        class="img-fluid">
-                </div>
-                <div class="col-md-6 contents">
-                    <div class="row justify-content-center">
-                        <div class="col-md-8">
-                            <div class="mb-4">
-                                <h3>Register</h3>
-                                @if (Session::has('error'))
-                                    <div class="alert alert-warning alert-dismissible fade show pesan_alert"
-                                        role="alert">
-                                        {{ Session::get('error') }}
-                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                @endif
-                            </div>
-                            <form method="POST" action="{{ route('post_register') }}" method="POST"
-                                class="needs-validation" novalidate="">
-                                @csrf
-                                <div class="form-group first">
-                                    <label for="nama">Nama</label>
-                                    <input type="nama" class="form-control" name="nama" id="nama" required>
-
-                                </div>
-                                <div class="form-group first">
-                                    <label for="nama">NO Tlp</label>
-                                    <input type="no_tlp" class="form-control" name="no_tlp" id="no_tlp" required>
-
-                                </div>
-                                <div class="form-group first">
-                                    <label for="nama">Alamat</label>
-                                    <input type="alamat" class="form-control" name="alamat" id="alamat" required>
-
-                                </div>
-                                <div class="form-group">
-                                    <label for="jenis_kelamin">Jenis Kelamin:</label><br>
-                                    <input type="radio" id="jenis_kelamin_pria" name="jenis_kelamin" value="L" required>
-                                    <label for="jenis_kelamin_pria">Pria</label><br>
-                                    <input type="radio" id="jenis_kelamin_wanita" name="jenis_kelamin" value="P">
-                                    <label for="jenis_kelamin_wanita">Wanita</label><br>
-                                </div>
-                                
-                                <div class="form-group first">
-                                    <label for="email">Email</label>
-                                    <input type="email" class="form-control" name="email" id="email" required>
-
-                                </div>
-                                <div class="form-group last mb-4">
-                                    <label for="password">Password</label>
-                                    <input type="password" class="form-control" name="password" id="password" required>
-                                </div>
-
-                                {{-- <div class="d-flex mb-5 align-items-center">
-                                    <label class="control control--checkbox mb-0"><span class="caption">Remember
-                                            me</span>
-                                        <input type="checkbox" checked="checked" />
-                                        <div class="control__indicator"></div>
-                                    </label>
-                                    <span class="ml-auto"><a href="#" class="forgot-pass">Forgot
-                                            Password</a></span>
-                                </div> --}}
-
-                                <input type="submit" value="Register" class="btn btn-block btn-primary">
-
-                                {{-- <span class="d-block text-center my-4 text-muted">&mdash; or login with &mdash;</span>
-                                <div class="text-center">
-                                    <div class="social-login">
-                                        <a href="#" class="facebook">
-                                            <span class="icon-facebook mr-3"></span>
-                                        </a>
-                                        <a href="#" class="twitter">
-                                            <span class="icon-twitter mr-3"></span>
-                                        </a>
-                                        <a href="{{url('authorized/google')}}" class="google">
-                                            <span class="icon-google mr-3"></span>
-                                        </a>
-                                    </div>
-                                </div>
-                                 --}}
-                            </form>
-                            <div style="text-align: center">
-                                <p>Sudah Punya akun?</p> 
-                                <a href="/login">Login</a>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
+    <div class="wrapper">
+        <h2>Registrasi</h2>
+        <form method="POST" action="{{ route('post_register') }}" method="POST">
+            @csrf
+            <div class="input-box">
+                <input type="text" placeholder="Nama" name="name" required>
             </div>
-        </div>
+            <div class="input-box">
+                <input type="email" placeholder="Email" name="email" id="email" required>
+            </div>
+            @error('email')
+                <div style="color: red">{{ $message }}</div>
+            @enderror
+            <div class="input-box">
+                <input type="text" placeholder="NO Tlp" name="no_tlp" id="no_tlp" required>
+            </div>
+            <div class="input-box">
+                <input type="text" placeholder="Alamat" name="alamat" required>
+            </div>
+
+            Jenis Kelamin
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="L"
+                    checked>
+                <label class="form-check-label" for="exampleRadios1">
+                    Laki-laki
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="P">
+                <label class="form-check-label" for="exampleRadios2">
+                    Perempuan
+                </label>
+            </div>
+
+
+
+
+            <div class="input-box">
+                <input type="password" placeholder="Password" name="password" required>
+            </div>
+
+            <div class="input-box button">
+                <input type="Submit" value="Register Now">
+            </div>
+            <div class="text">
+                <h3>Sudah punya akun? <a href="login">Login</a></h3>
+            </div>
+        </form>
     </div>
-
-
-    <script src="frontend/login/js/jquery-3.3.1.min.js"></script>
-    <script src="frontend/login/js/popper.min.js"></script>
-    <script src="frontend/login/js/bootstrap.min.js"></script>
-    <script src="frontend/login/js/main.js"></script>
 </body>
+<script>
+    // Ambil elemen input
+    var inputNoTlp = document.getElementById('no_tlp');
+
+    // Tambahkan event listener untuk memantau input
+    inputNoTlp.addEventListener('input', function(event) {
+        // Dapatkan nilai input
+        var inputValue = event.target.value;
+
+        // Hapus karakter selain angka menggunakan regular expression
+        var sanitizedValue = inputValue.replace(/\D/g, '');
+
+        // Periksa apakah nilai input telah berubah setelah dibersihkan
+        if (inputValue !== sanitizedValue) {
+            // Jika nilai input berubah, setel nilai input ke nilai yang telah dibersihkan
+            event.target.value = sanitizedValue;
+        }
+    });
+
+
+    var inputEmail = document.getElementById('email');
+
+    // Tambahkan event listener untuk memantau input
+    inputEmail.addEventListener('blur', function(event) {
+        // Dapatkan nilai input
+        var inputValue = event.target.value;
+
+        // Buat regular expression untuk memeriksa format email
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        // Periksa apakah nilai input cocok dengan format email
+        if (!emailRegex.test(inputValue)) {
+            // Jika tidak cocok, tampilkan pesan peringatan
+            alert('Format email tidak valid. Silakan masukkan email yang valid.');
+            // Hapus nilai input yang tidak valid
+            event.target.value = '';
+            // Fokuskan kembali ke input email
+            event.target.focus();
+        }
+    });
+</script>
 
 </html>

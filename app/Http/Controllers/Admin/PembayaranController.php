@@ -92,7 +92,7 @@ class PembayaranController extends Controller
 
     public function destroy(Request $req)
     {
-        $result = Pesanan::findOrfail($req->id);
+        $result = Pembayaran::findOrfail($req->id);
         $result->delete();
         if ($result) {
             return redirect()->back()->with('success', 'Data Berhasil Dihapus');

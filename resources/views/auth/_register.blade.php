@@ -44,15 +44,13 @@
             <div class="row">
                 <div class="col-md-6">
                     <img src="https://www.jogjasuper.co.id/wp-content/uploads/2023/01/lokasi-Pantai-Slili.jpg" alt="Image"
-
-                    {{-- <img src="{{ asset('frontend/login/images/undraw_remotely_2j6y.svg') }}" alt="Image" --}}
                         class="img-fluid">
                 </div>
                 <div class="col-md-6 contents">
                     <div class="row justify-content-center">
                         <div class="col-md-8">
                             <div class="mb-4">
-                                <h3>Login</h3>
+                                <h3>Register</h3>
                                 @if (Session::has('error'))
                                     <div class="alert alert-warning alert-dismissible fade show pesan_alert"
                                         role="alert">
@@ -63,56 +61,72 @@
                                     </div>
                                 @endif
                             </div>
-                            <form method="POST" action="{{ route('postlogin') }}" method="POST"
-                                class="needs-validation" novalidate="">
+                            <form>
+                                <div class="form-group">
+                                  <label for="exampleInputEmail1">Email address</label>
+                                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                                </div>
+                                <div class="form-group">
+                                  <label for="exampleInputPassword1">Password</label>
+                                  <input type="password" class="form-control" id="exampleInputPassword1">
+                                </div>
+                                <div class="form-group form-check">
+                                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                  <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                              </form>
+                            {{-- <form method="POST" action="{{ route('post_register') }}" method="POST"
+                                class="needs-validation">
                                 @csrf
+                                <div class="form-group ">
+                                    <label for="nama">Nama</label>
+                                    <input type="text" class="form-control" name="nama" id="nama" required>
+
+                                </div>
+                                <div class="form-group">
+                                    <label for="nama">NO Tlp</label>
+                                    <input type="number" class="form-control" name="no_tlp" id="no_tlp" required>
+
+                                </div>
+                                <div class="form-group first">
+                                    <label for="nama">Alamat</label>
+                                    <input type="text" class="form-control" name="alamat" id="alamat" required>
+
+                                </div>
+                                <div class="form-group">
+                                    <label for="jenis_kelamin">Jenis Kelamin:</label><br>
+                                    <input type="radio" id="jenis_kelamin_pria" name="jenis_kelamin" value="L" required>
+                                    <label for="jenis_kelamin_pria">Pria</label><br>
+                                    <input type="radio" id="jenis_kelamin_wanita" name="jenis_kelamin" value="P">
+                                    <label for="jenis_kelamin_wanita">Wanita</label><br>
+                                </div>
+                                
                                 <div class="form-group first">
                                     <label for="email">Email</label>
-                                    <input type="email" class="form-control" name="email" id="email">
+                                    <input type="email" class="form-control" name="email" id="email" required>
 
                                 </div>
                                 <div class="form-group last mb-4">
                                     <label for="password">Password</label>
-                                    <input type="password" class="form-control" name="password" id="password">
+                                    <input type="password" class="form-control" name="password" id="password" required>
                                 </div>
 
-                                {{-- <div class="d-flex mb-5 align-items-center">
-                                    <label class="control control--checkbox mb-0"><span class="caption">Remember
-                                            me</span>
-                                        <input type="checkbox" checked="checked" />
-                                        <div class="control__indicator"></div>
-                                    </label>
-                                    <span class="ml-auto"><a href="#" class="forgot-pass">Forgot
-                                            Password</a></span>
-                                </div> --}}
+                            
 
-                                <input type="submit" value="Log In" class="btn btn-block btn-primary">
+                                <input type="submit" value="Register" class="btn btn-block btn-primary">
 
-                                {{-- <span class="d-block text-center my-4 text-muted">&mdash; or login with &mdash;</span>
-                                <div class="text-center">
-                                    <div class="social-login">
-                                        <a href="#" class="facebook">
-                                            <span class="icon-facebook mr-3"></span>
-                                        </a>
-                                        <a href="#" class="twitter">
-                                            <span class="icon-twitter mr-3"></span>
-                                        </a>
-                                        <a href="{{url('authorized/google')}}" class="google">
-                                            <span class="icon-google mr-3"></span>
-                                        </a>
-                                    </div>
-                                </div>
-                                 --}}
-                            </form><br>
+                             
+                            </form> --}}
                             <div style="text-align: center">
-                                <p>Belum Punya akun?</p> 
-                                <a href="/register">Register</a> <br><br>
+                                <p>Sudah Punya akun?</p> 
+                                <a href="/login">Login</a><br><br>
                                 <a href="/">
                                     <button class="btn btn-success">Kembali ke halaman awal</button>
                                 </a>
                             </div>
                         </div>
-
                     </div>
 
                 </div>
